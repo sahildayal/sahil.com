@@ -23,7 +23,7 @@ export const profile = {
   board: [
     { left: "ROCHESTER NY", right: "BASED" },
     { left: "BACKEND / AI", right: "BUILD" },
-    { left: "40 COUNTRIES", right: "COOKED" },
+    { left: "27 COUNTRIES", right: "COOKED" },
     { left: "WORLD CUP 26", right: "WENT" },
     { left: "SWE MAY 2027", right: "OPEN" },
   ],
@@ -36,7 +36,7 @@ export const profile = {
   about: [
     "I'm a BS/MS Computer Science student at RIT, finishing my second co-op at Paychex. Most of what I've shipped there lives in the unglamorous middle of the stack: Go MCP tooling used by fifty-odd engineers, an eight-agent pipeline that turned a two-day migration into a thirty-minute one, a data access layer that redacts PHI before it ever reaches a model.",
     "I treat agents like distributed systems rather than prompts. Define state explicitly, route deterministically, checkpoint after every node, and gate every irreversible action. Prompt engineering is a last resort, not a design pattern — most agent failures I've debugged were state-management failures wearing a costume.",
-    "Away from the keyboard I cook. Every week I pick a country and make something from it, and forty-odd weeks in I've become genuinely competent at Moroccan tagine, Vietnamese pho, and Georgian khachapuri. Football is the other one — having the World Cup in the US this year was surreal. I also play piano and read more crime thrillers than I'll admit to.",
+    "Away from the keyboard I cook. Every week I pick a country and make something from it, and twenty-seven weeks in I've become genuinely competent at Moroccan tagine, Vietnamese pho, and Georgian khachapuri. Football is the other one — having the World Cup in the US this year was surreal. I also play piano and read more crime thrillers than I'll admit to.",
   ],
 
   education: {

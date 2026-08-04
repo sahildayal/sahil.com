@@ -118,10 +118,10 @@ export default function Home() {
           <SectionHead eyebrow="Off the clock" />
           <div className="mt-6 grid gap-8 sm:grid-cols-[1fr_auto] sm:items-end">
             <p className="max-w-xl text-lg leading-relaxed text-ink-soft">
-              Every week I pick a country and cook something from it. Forty-odd
-              weeks in, that&apos;s become the other half of how I think about
-              this site — and it has its own page, laid out like a matchday
-              programme.
+              Every week I pick a country and cook something from it.
+              Twenty-seven weeks in, that&apos;s become the other half of how I
+              think about this site — and it has its own page, laid out like a
+              matchday programme.
             </p>
             <Link
               href="/world"
