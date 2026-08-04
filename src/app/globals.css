@@ -1,0 +1,253 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Sahil Dayal — portfolio
+   Palette: "Terracotta & Ink"
+   Type:    Archivo (signage grotesque, width axis) / Newsreader
+            (long-form) / JetBrains Mono (data + tabular numerals)
+   ============================================================ */
+
+:root {
+  color-scheme: light;
+
+  /* ground */
+  --c-paper: #fbf7f0;
+  --c-paper-raised: #f3eee4;
+  --c-paper-sunk: #eae3d6;
+
+  /* type */
+  --c-ink: #14181f;
+  --c-ink-soft: #3a4048;
+  --c-muted: #6f6860;
+
+  /* structure */
+  --c-rule: #ded6c7;
+  --c-rule-strong: #c3b8a4;
+
+  /* accent */
+  --c-clay: #b34a22;
+  --c-clay-hover: #8f3a19;
+  --c-clay-wash: #f6e5dc;
+
+  /* reserved for /world — football furniture only */
+  --c-pitch: #1d4d3b;
+  --c-pitch-wash: #e3ece7;
+
+  /* split-flap board */
+  --c-flap: #1a1d24;
+  --c-flap-face: #f4efe6;
+  --c-flap-seam: #0b0d11;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --c-paper: #14181f;
+    --c-paper-raised: #1c222b;
+    --c-paper-sunk: #0f1319;
+
+    --c-ink: #f0ebe3;
+    --c-ink-soft: #c4beb4;
+    --c-muted: #9a9288;
+
+    --c-rule: #2a313b;
+    --c-rule-strong: #3d4753;
+
+    --c-clay: #e4693a;
+    --c-clay-hover: #f18354;
+    --c-clay-wash: #2e1d16;
+
+    --c-pitch: #4e9c7d;
+    --c-pitch-wash: #16241e;
+
+    --c-flap: #05070a;
+    --c-flap-face: #ece6dc;
+    --c-flap-seam: #000;
+  }
+}
+
+/* Explicit toggle wins over the OS preference, in both directions. */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --c-paper: #fbf7f0;
+  --c-paper-raised: #f3eee4;
+  --c-paper-sunk: #eae3d6;
+  --c-ink: #14181f;
+  --c-ink-soft: #3a4048;
+  --c-muted: #6f6860;
+  --c-rule: #ded6c7;
+  --c-rule-strong: #c3b8a4;
+  --c-clay: #b34a22;
+  --c-clay-hover: #8f3a19;
+  --c-clay-wash: #f6e5dc;
+  --c-pitch: #1d4d3b;
+  --c-pitch-wash: #e3ece7;
+  --c-flap: #1a1d24;
+  --c-flap-face: #f4efe6;
+  --c-flap-seam: #0b0d11;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --c-paper: #14181f;
+  --c-paper-raised: #1c222b;
+  --c-paper-sunk: #0f1319;
+  --c-ink: #f0ebe3;
+  --c-ink-soft: #c4beb4;
+  --c-muted: #9a9288;
+  --c-rule: #2a313b;
+  --c-rule-strong: #3d4753;
+  --c-clay: #e4693a;
+  --c-clay-hover: #f18354;
+  --c-clay-wash: #2e1d16;
+  --c-pitch: #4e9c7d;
+  --c-pitch-wash: #16241e;
+  --c-flap: #05070a;
+  --c-flap-face: #ece6dc;
+  --c-flap-seam: #000;
+}
+
+@theme inline {
+  --color-paper: var(--c-paper);
+  --color-paper-raised: var(--c-paper-raised);
+  --color-paper-sunk: var(--c-paper-sunk);
+  --color-ink: var(--c-ink);
+  --color-ink-soft: var(--c-ink-soft);
+  --color-muted: var(--c-muted);
+  --color-rule: var(--c-rule);
+  --color-rule-strong: var(--c-rule-strong);
+  --color-clay: var(--c-clay);
+  --color-clay-hover: var(--c-clay-hover);
+  --color-clay-wash: var(--c-clay-wash);
+  --color-pitch: var(--c-pitch);
+  --color-pitch-wash: var(--c-pitch-wash);
+  --color-flap: var(--c-flap);
+  --color-flap-face: var(--c-flap-face);
+  --color-flap-seam: var(--c-flap-seam);
+
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
+}
+
+/* ---------- base ---------- */
+
+*,
+*::before,
+*::after {
+  border-color: var(--c-rule);
+}
+
+body {
+  background-color: var(--c-paper);
+  color: var(--c-ink);
+  font-family: var(--font-body);
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Newsprint tooth. Matchday programmes are printed on cheap stock —
+   this keeps the light ground from reading as flat digital cream. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+  body::before {
+    opacity: 0.05;
+  }
+}
+
+:root[data-theme="dark"] body::before {
+  opacity: 0.05;
+}
+
+:root[data-theme="light"] body::before {
+  opacity: 0.035;
+}
+
+/* Display type is signage: set wide and heavy at large sizes. */
+.font-display {
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 100;
+}
+
+.display-wide {
+  font-variation-settings: "wdth" 115;
+}
+
+.display-narrow {
+  font-variation-settings: "wdth" 80;
+}
+
+/* Numbers carry meaning on this site — set them properly. */
+.tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+}
+
+/* Long-form case-study prose. */
+.prose-case p {
+  margin-block: 1.1em;
+  line-height: 1.72;
+  font-size: 1.0625rem;
+  color: var(--c-ink-soft);
+}
+
+.prose-case strong {
+  color: var(--c-ink);
+  font-weight: 600;
+}
+
+/* ---------- quality floor ---------- */
+
+:focus-visible {
+  outline: 2px solid var(--c-clay);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--c-clay);
+  color: var(--c-paper);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
