@@ -1,3 +1,9 @@
+/**
+ * Set to "/resume.pdf" once the file is dropped into public/. While it's null
+ * the download link is hidden everywhere rather than shipping a dead link.
+ */
+export const resumeUrl: string | null = null;
+
 export const profile = {
   name: "Sahil Dayal",
   initials: "SD",

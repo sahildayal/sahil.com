@@ -253,9 +253,8 @@ export const projects: Project[] = [
     category: "Tools",
     featured: false,
     access: {
-      kind: "soon",
-      repo: "https://github.com/sahildayal/Everyday-Todo",
-      note: "Going public shortly — pending a secrets audit.",
+      kind: "closed",
+      note: "Private for now — described here, not published.",
     },
     stack: ["TypeScript", "Next.js", "Telegram Bot API", "SQLite"],
     problem:

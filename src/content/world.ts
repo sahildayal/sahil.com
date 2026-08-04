@@ -1,14 +1,14 @@
 /**
  * Content for /world — the matchday programme.
  *
- * PLACEHOLDER DATA is marked with `pending: true` and a TODO. Sahil is sending
- * the real material (World Cup fixtures attended, the full cooking list,
- * photos, current book). Swap the values, drop the flag, delete the TODO.
+ * Sections with no real content yet are switched OFF rather than filled with
+ * placeholders, so nothing unfinished is public. Flip the flag and add the data
+ * to bring a section back.
  */
 
 export type Cap = {
   country: string;
-  code: string; // ISO 3166-1 alpha-2, used for the flag glyph
+  code: string; // ISO 3166-1 alpha-2
   dish: string;
   week: number;
 };
@@ -47,54 +47,23 @@ export const startingXI: Position[] = [
 
 export const formation = "4-3-3";
 
-/** TODO(sahil): send me the real fixtures — teams, scores, venues, dates. */
-export const fixturesPending = true;
-export const fixtures: Fixture[] = [
-  {
-    date: "Jun 2026",
-    venue: "MetLife Stadium, NJ",
-    home: "TBC",
-    away: "TBC",
-    score: "—",
-    note: "Placeholder — awaiting real match details",
-  },
-  {
-    date: "Jun 2026",
-    venue: "TBC",
-    home: "TBC",
-    away: "TBC",
-    score: "—",
-    note: "Placeholder — awaiting real match details",
-  },
-];
+/**
+ * TO RE-ENABLE: set `showFixtures = true` and add the real matches — teams,
+ * scores, venues, dates. Hidden until then.
+ */
+export const showFixtures = false;
+export const fixtures: Fixture[] = [];
 
 /**
- * TODO(sahil): send the full list. These are the ones named in your content
- * doc plus placeholders to show the grid at full size.
+ * Only countries with a dish I can actually name. `capsTotal` is the real
+ * running count; the grid shows the ones written up so far.
+ * TO EXPAND: add entries here as you record them.
  */
-export const capsPending = true;
 export const capsTotal = 40;
 export const caps: Cap[] = [
   { country: "Morocco", code: "MA", dish: "Lamb tagine", week: 1 },
   { country: "Vietnam", code: "VN", dish: "Pho bo", week: 2 },
   { country: "Georgia", code: "GE", dish: "Khachapuri", week: 3 },
-  { country: "India", code: "IN", dish: "—", week: 4 },
-  { country: "Japan", code: "JP", dish: "—", week: 5 },
-  { country: "Mexico", code: "MX", dish: "—", week: 6 },
-  { country: "Italy", code: "IT", dish: "—", week: 7 },
-  { country: "Thailand", code: "TH", dish: "—", week: 8 },
-  { country: "Lebanon", code: "LB", dish: "—", week: 9 },
-  { country: "Peru", code: "PE", dish: "—", week: 10 },
-  { country: "Korea", code: "KR", dish: "—", week: 11 },
-  { country: "Ethiopia", code: "ET", dish: "—", week: 12 },
-  { country: "Spain", code: "ES", dish: "—", week: 13 },
-  { country: "Turkey", code: "TR", dish: "—", week: 14 },
-  { country: "Greece", code: "GR", dish: "—", week: 15 },
-  { country: "China", code: "CN", dish: "—", week: 16 },
-  { country: "France", code: "FR", dish: "—", week: 17 },
-  { country: "Brazil", code: "BR", dish: "—", week: 18 },
-  { country: "Poland", code: "PL", dish: "—", week: 19 },
-  { country: "Egypt", code: "EG", dish: "—", week: 20 },
 ];
 
 /** The rest of the off-hours column. */
@@ -106,7 +75,6 @@ export const offPitch = [
   {
     title: "Reading",
     body: "Crime thrillers and science fiction, in roughly that order.",
-    pending: true, // TODO(sahil): current book
   },
   {
     title: "The kitchen rule",

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { profile } from "@/content/profile";
+import { profile, resumeUrl } from "@/content/profile";
 import { featuredProjects, projects } from "@/content/projects";
 import { experience } from "@/content/experience";
 import { SplitFlap } from "@/components/SplitFlap";
@@ -36,6 +36,14 @@ export default function Home() {
           >
             See the work
           </Link>
+          {resumeUrl ? (
+            <a
+              href={resumeUrl}
+              className="border-b border-rule-strong pb-0.5 font-mono text-sm transition-colors hover:border-clay hover:text-clay"
+            >
+              Download resume
+            </a>
+          ) : null}
           <a
             href={`mailto:${profile.email}`}
             className="border-b border-rule-strong pb-0.5 font-mono text-sm transition-colors hover:border-clay hover:text-clay"

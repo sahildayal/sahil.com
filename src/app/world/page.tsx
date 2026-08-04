@@ -3,9 +3,8 @@ import {
   startingXI,
   formation,
   fixtures,
-  fixturesPending,
+  showFixtures,
   caps,
-  capsPending,
   capsTotal,
   offPitch,
 } from "@/content/world";
@@ -18,14 +17,6 @@ export const metadata: Metadata = {
   description:
     "A matchday programme: one country cooked a week, the 2026 World Cup, and the eleven tools I actually reach for.",
 };
-
-function Pending({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="mt-3 border-l-2 border-clay bg-clay-wash px-4 py-3 font-mono text-xs leading-relaxed text-ink-soft">
-      {children}
-    </p>
-  );
-}
 
 export default function WorldPage() {
   return (
@@ -68,39 +59,35 @@ export default function WorldPage() {
         </Reveal>
       </section>
 
-      {/* ---------- fixtures ---------- */}
-      <section className="mt-20">
-        <Reveal>
-          <SectionHead
-            eyebrow="Fixtures attended"
-            title="World Cup 2026"
-            meta={`${fixtures.length} matches`}
-          />
-          {fixturesPending ? (
-            <Pending>
-              Placeholder fixtures. Sahil — send me the teams, scores, venues
-              and dates and I&apos;ll swap these in.
-            </Pending>
-          ) : null}
-          <ul className="mt-4 divide-y divide-rule border-t border-rule">
-            {fixtures.map((f, i) => (
-              <li
-                key={i}
-                className="grid gap-2 py-4 sm:grid-cols-[6rem_1fr_auto] sm:items-baseline sm:gap-6"
-              >
-                <span className="tabular text-xs text-muted">{f.date}</span>
-                <div>
-                  <p className="font-display text-base font-semibold uppercase tracking-wide">
-                    {f.home} <span className="text-muted">v</span> {f.away}
-                  </p>
-                  <p className="eyebrow mt-1">{f.venue}</p>
-                </div>
-                <span className="tabular text-lg text-clay">{f.score}</span>
-              </li>
-            ))}
-          </ul>
-        </Reveal>
-      </section>
+      {/* ---------- fixtures (hidden until the real matches are in) ---------- */}
+      {showFixtures && fixtures.length > 0 ? (
+        <section className="mt-20">
+          <Reveal>
+            <SectionHead
+              eyebrow="Fixtures attended"
+              title="World Cup 2026"
+              meta={`${fixtures.length} matches`}
+            />
+            <ul className="mt-4 divide-y divide-rule border-t border-rule">
+              {fixtures.map((f, i) => (
+                <li
+                  key={i}
+                  className="grid gap-2 py-4 sm:grid-cols-[6rem_1fr_auto] sm:items-baseline sm:gap-6"
+                >
+                  <span className="tabular text-xs text-muted">{f.date}</span>
+                  <div>
+                    <p className="font-display text-base font-semibold uppercase tracking-wide">
+                      {f.home} <span className="text-muted">v</span> {f.away}
+                    </p>
+                    <p className="eyebrow mt-1">{f.venue}</p>
+                  </div>
+                  <span className="tabular text-lg text-clay">{f.score}</span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </section>
+      ) : null}
 
       {/* ---------- the kitchen table ---------- */}
       <section className="mt-20">
@@ -112,18 +99,12 @@ export default function WorldPage() {
           />
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">
             One country a week, cooked properly — no substituting the ingredient
-            that makes it the dish.
+            that makes it the dish. {capsTotal} weeks in; these are the ones
+            written up so far.
           </p>
-          {capsPending ? (
-            <Pending>
-              Showing {caps.length} of {capsTotal}, and most dishes are still
-              blank. Sahil — send the full list with what you made and I&apos;ll
-              fill the grid.
-            </Pending>
-          ) : null}
         </Reveal>
         <Reveal>
-          <ul className="mt-6 grid grid-cols-2 gap-px border border-rule bg-rule sm:grid-cols-3 lg:grid-cols-4">
+          <ul className="mt-6 grid grid-cols-2 gap-px border border-rule bg-rule sm:grid-cols-3">
             {caps.map((cap) => (
               <li key={cap.country} className="bg-paper p-4">
                 {/* The ISO code, not a flag emoji — Windows has no flag font,
@@ -154,7 +135,10 @@ export default function WorldPage() {
           <SectionHead eyebrow="Also" />
           <div className="mt-6 grid gap-8 sm:grid-cols-3">
             {offPitch.map((item) => (
-              <div key={item.title} className="border-t border-rule-strong pt-4">
+              <div
+                key={item.title}
+                className="border-t border-rule-strong pt-4"
+              >
                 <h3 className="font-display text-sm font-semibold uppercase tracking-wide">
                   {item.title}
                 </h3>

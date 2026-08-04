@@ -40,10 +40,12 @@ export function Pitch({
           {formation}
         </span>
 
+        {/* Labels are narrow on mobile: adjacent players sit ~86px apart at a
+            430px viewport, so a 96px label would collide with its neighbour. */}
         {players.map((p) => (
           <div
             key={p.name}
-            className="absolute flex w-24 -translate-x-1/2 translate-y-[-50%] flex-col items-center text-center sm:w-28"
+            className="absolute flex w-[4.25rem] -translate-x-1/2 translate-y-[-50%] flex-col items-center text-center sm:w-28"
             style={{ left: `${p.x}%`, top: `${100 - p.y}%` }}
           >
             <span className="tabular flex h-7 w-7 items-center justify-center rounded-full bg-pitch text-[0.6rem] font-semibold text-paper sm:h-8 sm:w-8">
