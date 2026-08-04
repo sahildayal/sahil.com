@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { profile } from "@/content/profile";
+import Image from "next/image";
+import { profile, resumeUrl, headshot } from "@/content/profile";
 import { Container, SectionHead, Tag } from "@/components/primitives";
 import { Reveal } from "@/components/Reveal";
 
@@ -16,12 +17,40 @@ export default function AboutPage() {
         About
       </h1>
 
-      <div className="mt-10 max-w-2xl space-y-6">
-        {profile.about.map((para, i) => (
-          <Reveal key={i} delay={i * 0.05}>
-            <p className="text-lg leading-relaxed text-ink-soft">{para}</p>
-          </Reveal>
-        ))}
+      <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_16rem] lg:gap-14">
+        <div className="max-w-2xl space-y-6">
+          {profile.about.map((para, i) => (
+            <Reveal key={i} delay={i * 0.05}>
+              <p className="text-lg leading-relaxed text-ink-soft">{para}</p>
+            </Reveal>
+          ))}
+
+          {resumeUrl ? (
+            <Reveal>
+              <a
+                href={resumeUrl}
+                className="inline-block border-b border-clay pb-0.5 font-mono text-sm text-clay transition-colors hover:border-clay-hover hover:text-clay-hover"
+              >
+                Download resume (PDF) →
+              </a>
+            </Reveal>
+          ) : null}
+        </div>
+
+        <Reveal className="lg:pt-2">
+          <figure>
+            <Image
+              src={headshot}
+              alt={`Portrait of ${profile.name}`}
+              width={545}
+              height={573}
+              sizes="(min-width: 1024px) 16rem, 60vw"
+              className="w-full max-w-[16rem] border border-rule object-cover"
+              priority
+            />
+            <figcaption className="eyebrow mt-3">{profile.location}</figcaption>
+          </figure>
+        </Reveal>
       </div>
 
       {/* ---------- education ---------- */}
@@ -53,6 +82,39 @@ export default function AboutPage() {
                 </dd>
               </div>
             </dl>
+
+            <div className="mt-8 grid gap-8 sm:grid-cols-2">
+              <div>
+                <h3 className="eyebrow border-b border-rule pb-2">
+                  Relevant coursework
+                </h3>
+                <ul className="mt-3 space-y-2">
+                  {profile.education.coursework.map((c) => (
+                    <li key={c.code} className="flex gap-3 text-sm">
+                      <span className="tabular shrink-0 text-xs text-muted">
+                        {c.code}
+                      </span>
+                      <span className="text-ink-soft">{c.name}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="eyebrow border-b border-rule pb-2">
+                  Taking now — Fall 2026
+                </h3>
+                <ul className="mt-3 space-y-2">
+                  {profile.education.current.map((c) => (
+                    <li key={c.code} className="flex gap-3 text-sm">
+                      <span className="tabular shrink-0 text-xs text-muted">
+                        {c.code}
+                      </span>
+                      <span className="text-ink-soft">{c.name}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
         </Reveal>
       </div>

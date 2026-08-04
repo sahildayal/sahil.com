@@ -2,7 +2,10 @@
  * Set to "/resume.pdf" once the file is dropped into public/. While it's null
  * the download link is hidden everywhere rather than shipping a dead link.
  */
-export const resumeUrl: string | null = null;
+export const resumeUrl: string | null = "/resume.pdf";
+
+/** Headshot lives in public/. */
+export const headshot = "/headshot.jpg";
 
 export const profile = {
   name: "Sahil Dayal",
@@ -43,14 +46,21 @@ export const profile = {
     gpa: "3.5 / 4.0",
     honors: "Dean's List — Fall '21, '23, '24, '25 · Spring '25",
     focus: "Artificial Intelligence / Machine Learning · Data Science",
-    // TODO(sahil): send me your top 4–6 courses and I'll swap these.
+    // Graduate-level AI/data coursework, all completed with an A.
     coursework: [
-      "Intro to Machine Learning (CSCI 635)",
-      "Computer Security (CSCI 642)",
-      "Foundations of AI",
-      "Database Systems",
+      { code: "CSCI 635", name: "Intro to Machine Learning" },
+      { code: "CSCI 630", name: "Foundations of Artificial Intelligence" },
+      { code: "CSCI 620", name: "Introduction to Big Data" },
+      { code: "CSCI 642", name: "Secure Coding" },
+      { code: "CSCI 251", name: "Concepts of Parallel & Distributed Systems" },
     ],
-    courseworkPending: true,
+    // Fall 2026, in progress.
+    current: [
+      { code: "CSCI 720", name: "Big Data Analytics" },
+      { code: "CSCI 723", name: "Advanced Databases: Graph Databases" },
+      { code: "CSCI 621", name: "Database System Implementation" },
+      { code: "CSCI 261", name: "Analysis of Algorithms" },
+    ],
   },
 
   skills: [

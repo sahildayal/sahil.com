@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 type Theme = "light" | "dark";
 
-export function ThemeToggle() {
+export function ThemeToggle({ className = "eyebrow" }: { className?: string }) {
   const [theme, setTheme] = useState<Theme | null>(null);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={toggle}
-      className="eyebrow transition-colors hover:text-clay"
+      className={className}
       aria-label={
         theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
       }

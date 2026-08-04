@@ -3,7 +3,7 @@ import {
   startingXI,
   formation,
   fixtures,
-  showFixtures,
+  MAX_FIXTURES,
   caps,
   capsTotal,
   offPitch,
@@ -59,29 +59,37 @@ export default function WorldPage() {
         </Reveal>
       </section>
 
-      {/* ---------- fixtures (hidden until the real matches are in) ---------- */}
-      {showFixtures && fixtures.length > 0 ? (
+      {/* ---------- next two matches ---------- */}
+      {fixtures.length > 0 ? (
         <section className="mt-20">
           <Reveal>
             <SectionHead
-              eyebrow="Fixtures attended"
-              title="World Cup 2026"
-              meta={`${fixtures.length} matches`}
+              eyebrow="On the calendar"
+              title="What I'm watching next"
+              meta="Premier League"
             />
-            <ul className="mt-4 divide-y divide-rule border-t border-rule">
-              {fixtures.map((f, i) => (
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">
+              Two matches, updated as the season goes. The predictor has an
+              opinion on most of these — it&apos;s usually wrong about the draw.
+            </p>
+            <ul className="mt-6 divide-y divide-rule border-y border-rule">
+              {fixtures.slice(0, MAX_FIXTURES).map((f, i) => (
                 <li
                   key={i}
-                  className="grid gap-2 py-4 sm:grid-cols-[6rem_1fr_auto] sm:items-baseline sm:gap-6"
+                  className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 py-5"
                 >
-                  <span className="tabular text-xs text-muted">{f.date}</span>
-                  <div>
-                    <p className="font-display text-base font-semibold uppercase tracking-wide">
+                  <div className="min-w-0">
+                    <p className="font-display text-base font-semibold uppercase tracking-wide sm:text-lg">
                       {f.home} <span className="text-muted">v</span> {f.away}
                     </p>
-                    <p className="eyebrow mt-1">{f.venue}</p>
+                    {f.note ? <p className="eyebrow mt-1.5">{f.note}</p> : null}
                   </div>
-                  <span className="tabular text-lg text-clay">{f.score}</span>
+                  <div className="flex shrink-0 items-baseline gap-3">
+                    <span className="tabular text-xs text-muted">{f.date}</span>
+                    <span className="tabular text-lg text-clay">
+                      {f.kickoff}
+                    </span>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -99,12 +107,12 @@ export default function WorldPage() {
           />
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">
             One country a week, cooked properly — no substituting the ingredient
-            that makes it the dish. {capsTotal} weeks in; these are the ones
-            written up so far.
+            that makes it the dish. {capsTotal} weeks in, {capsTotal} countries
+            deep.
           </p>
         </Reveal>
         <Reveal>
-          <ul className="mt-6 grid grid-cols-2 gap-px border border-rule bg-rule sm:grid-cols-3">
+          <ul className="mt-6 grid grid-cols-2 gap-px border border-rule bg-rule sm:grid-cols-3 lg:grid-cols-4">
             {caps.map((cap) => (
               <li key={cap.country} className="bg-paper p-4">
                 {/* The ISO code, not a flag emoji — Windows has no flag font,

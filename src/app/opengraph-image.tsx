@@ -10,7 +10,10 @@ export const contentType = "image/png";
  * opens.
  */
 export default async function OpenGraphImage() {
-  const board = ["ROCHESTER NY", "BACKEND / AI", "SWE MAY 2027"];
+  // One message, like the real board — three words in a row ran together into
+  // a single illegible string and pushed the URL off the canvas.
+  const message = "SWE MAY 2027";
+  const status = "OPEN";
 
   return new ImageResponse(
     (
@@ -63,36 +66,47 @@ export default async function OpenGraphImage() {
         </div>
 
         {/* split-flap strip */}
-        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          {board.map((word, wi) => (
-            <div key={wi} style={{ display: "flex", gap: 4 }}>
-              {Array.from(word).map((c, i) => (
-                <div
-                  key={i}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: 26,
-                    height: 38,
-                    background: "#05070a",
-                    color: "#ece6dc",
-                    fontSize: 20,
-                    fontWeight: 600,
-                    borderRadius: 3,
-                  }}
-                >
-                  {c === " " ? "" : c}
-                </div>
-              ))}
-            </div>
-          ))}
+        <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 18,
+              background: "#05070a",
+              padding: "14px 18px",
+              borderRadius: 4,
+            }}
+          >
+            {[message, status].map((word, wi) => (
+              <div key={wi} style={{ display: "flex", gap: 4 }}>
+                {Array.from(word).map((c, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: 30,
+                      height: 44,
+                      background: "#14181f",
+                      color: "#ece6dc",
+                      fontSize: 24,
+                      fontWeight: 600,
+                      borderRadius: 3,
+                    }}
+                  >
+                    {c === " " ? "" : c}
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
           <div
             style={{
               marginLeft: "auto",
-              fontSize: 24,
+              fontSize: 26,
               color: "#e4693a",
-              letterSpacing: 2,
+              letterSpacing: 1,
             }}
           >
             sahildayal.vercel.app
