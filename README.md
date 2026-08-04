@@ -44,13 +44,23 @@ pnpm dev      # http://localhost:3000
 pnpm build
 ```
 
+## Maintaining
+
+**Fixtures** (`src/content/world.ts`) — the two upcoming matches on `/world` are
+hand-maintained. Swap them as the season goes; only the first `MAX_FIXTURES`
+render, so extras are harmless. These should eventually be driven by
+`EPL_LALIGA_PREDICTOR` output instead.
+
+**The football panel** on the home page renders an honest offline state until
+`PREDICTIONS_URL` is set to a JSON endpoint. See `src/components/PredictorPanel.tsx`.
+
+**Resume** — `public/resume.pdf`. The link is gated on `resumeUrl` in
+`src/content/profile.ts`, so setting it to `null` hides the link everywhere
+rather than shipping a dead one.
+
 ## Outstanding
 
-Placeholders are marked `TODO(sahil)` in `src/content/` and render a visible
-notice on the page, so nothing fake ships silently:
-
-- `world.ts` — real World Cup fixtures, the full 40-country cooking list, current book
-- `profile.ts` — top 4–6 relevant courses
-- headshot, and a hosted resume PDF
-- `PREDICTIONS_URL` env var to bring the football panel online (see
-  `src/components/PredictorPanel.tsx`)
+- Verify the cooking list in `world.ts` — the dishes need to match what was
+  actually cooked
+- Current book for the Reading card
+- Everyday-Todo stays description-only while the repo is private
