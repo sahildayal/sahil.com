@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { profile, resumeUrl, headshot } from "@/content/profile";
+import { aboutShot } from "@/content/oman";
 import { Container, SectionHead, Tag } from "@/components/primitives";
 import { Reveal } from "@/components/Reveal";
 
@@ -38,18 +39,38 @@ export default function AboutPage() {
         </div>
 
         <Reveal className="lg:pt-2">
-          <figure>
-            <Image
-              src={headshot}
-              alt={`Portrait of ${profile.name}`}
-              width={545}
-              height={573}
-              sizes="(min-width: 1024px) 16rem, 60vw"
-              className="w-full max-w-[16rem] rounded-[var(--radius-card)] object-cover"
-              priority
-            />
-            <figcaption className="eyebrow mt-3">{profile.location}</figcaption>
-          </figure>
+          <div className="flex gap-3 lg:flex-col lg:gap-6">
+            <figure className="min-w-0 flex-1 lg:flex-none">
+              <Image
+                src={headshot}
+                alt={`Portrait of ${profile.name}`}
+                width={545}
+                height={573}
+                sizes="(min-width: 1024px) 16rem, 45vw"
+                className="w-full rounded-[var(--radius-card)] object-cover lg:max-w-[16rem]"
+                priority
+              />
+              <figcaption className="eyebrow mt-3">
+                {profile.location}
+              </figcaption>
+            </figure>
+
+            {/* Home, next to where he lives now — the two ends of the hero's
+                "Muscat → Rochester" said with pictures instead. */}
+            <figure className="min-w-0 flex-1 lg:flex-none">
+              <Image
+                src={aboutShot.src}
+                alt={aboutShot.alt}
+                width={aboutShot.w}
+                height={aboutShot.h}
+                sizes="(min-width: 1024px) 16rem, 45vw"
+                className="w-full rounded-[var(--radius-card)] object-cover lg:max-w-[16rem]"
+              />
+              <figcaption className="eyebrow mt-3">
+                {aboutShot.place}
+              </figcaption>
+            </figure>
+          </div>
         </Reveal>
       </div>
 

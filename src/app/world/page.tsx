@@ -8,8 +8,10 @@ import {
   capsTotal,
   offPitch,
 } from "@/content/world";
+import { tourShots, kitchenShots } from "@/content/oman";
 import { Pitch } from "@/components/Pitch";
 import { TideLine } from "@/components/TideLine";
+import { PhotoGrid } from "@/components/PhotoGrid";
 import { Container, SectionHead } from "@/components/primitives";
 import { Reveal } from "@/components/Reveal";
 
@@ -40,6 +42,28 @@ export default function WorldPage() {
       </header>
 
       <TideLine seed={0} className="mt-8" />
+
+      {/* ---------- the tour ---------- */}
+      <section className="mt-16">
+        <Reveal>
+          <SectionHead
+            eyebrow="Where I'm from"
+            title="Take the tour"
+            meta="Oman"
+          />
+          <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">
+            Muscat is an arid coast — bare Hajar rock coming straight down to
+            the water, whitewash, and a souq that has been trading along this
+            shore for centuries. It is where most of the rest of this page
+            comes from.
+          </p>
+        </Reveal>
+        <Reveal>
+          <div className="mt-7">
+            <PhotoGrid shots={[...tourShots]} columns={3} />
+          </div>
+        </Reveal>
+      </section>
 
       {/* ---------- starting XI ---------- */}
       <section className="mt-16">
@@ -111,8 +135,16 @@ export default function WorldPage() {
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">
             One country a week, cooked properly — no substituting the ingredient
             that makes it the dish. {capsTotal} weeks in, {capsTotal} countries
-            deep.
+            deep. It started at a spice stall in Nizwa and over a cup of kahwa,
+            which is as good an origin as any.
           </p>
+        </Reveal>
+
+        {/* The two photos that are about food, sitting with the food. */}
+        <Reveal>
+          <div className="mt-7 max-w-md">
+            <PhotoGrid shots={[...kitchenShots]} columns={2} />
+          </div>
         </Reveal>
         <Reveal>
           <ul className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
