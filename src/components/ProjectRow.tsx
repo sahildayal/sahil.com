@@ -10,7 +10,7 @@ export function ProjectRow({ project }: { project: Project }) {
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className="group block border-b border-rule py-5 transition-colors hover:bg-paper-raised"
+      className="group -mx-3 block rounded-[var(--radius-card)] px-3 py-4 transition-colors hover:bg-paper-raised"
     >
       <div className="flex flex-col gap-1.5 sm:flex-row sm:items-baseline sm:gap-6">
         <span className="tabular w-20 shrink-0 text-xs text-muted">
@@ -19,17 +19,17 @@ export function ProjectRow({ project }: { project: Project }) {
 
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <h3 className="font-display text-lg font-semibold leading-tight transition-colors group-hover:text-clay sm:text-xl">
+            <h3 className="font-display text-lg font-semibold leading-tight transition-colors group-hover:text-sea sm:text-xl">
               {project.title}
             </h3>
             {project.live ? (
-              <span className="inline-flex items-center gap-1.5 font-mono text-[0.6rem] uppercase tracking-widest text-clay">
-                <span className="h-1.5 w-1.5 rounded-full bg-clay" />
+              <span className="inline-flex items-center gap-1.5 font-mono text-[0.6rem] tracking-widest text-sea">
+                <span className="h-1.5 w-1.5 rounded-full bg-sea" />
                 Live
               </span>
             ) : null}
             {project.access.kind === "closed" ? (
-              <span className="font-mono text-[0.6rem] uppercase tracking-widest text-muted">
+              <span className="font-mono text-[0.6rem] tracking-widest text-muted">
                 Not public
               </span>
             ) : null}

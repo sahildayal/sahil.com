@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Archivo, Newsreader, JetBrains_Mono } from "next/font/google";
+import { Fraunces, Newsreader, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { profile } from "@/content/profile";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import "./globals.css";
 
-const archivo = Archivo({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  variable: "--font-archivo",
-  axes: ["wdth"],
+  variable: "--font-fraunces",
+  axes: ["SOFT", "WONK", "opsz"],
   display: "swap",
 });
 
@@ -69,7 +69,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${archivo.variable} ${newsreader.variable} ${jetbrains.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${newsreader.variable} ${jetbrains.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>
@@ -78,7 +78,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-clay focus:text-paper focus:px-4 focus:py-2 focus:font-mono focus:text-xs"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-sea focus:text-paper focus:px-4 focus:py-2 focus:font-mono focus:text-xs"
         >
           Skip to content
         </a>

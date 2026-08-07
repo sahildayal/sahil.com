@@ -9,7 +9,7 @@ export default function NotFound() {
   return (
     <Container className="flex min-h-[60vh] flex-col justify-center py-20">
       <span className="eyebrow">Error 404</span>
-      <h1 className="mt-4 font-display display-wide text-[clamp(2.25rem,8vw,4.5rem)] font-bold uppercase leading-[0.9] tracking-tight">
+      <h1 className="mt-4 font-display display-wide text-[clamp(2.25rem,8vw,4.5rem)] font-bold leading-[0.9] tracking-tight">
         No page
         <br />
         at that address
@@ -21,19 +21,19 @@ export default function NotFound() {
       <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
         <Link
           href="/"
-          className="border-b border-clay pb-0.5 font-mono text-sm text-clay transition-colors hover:border-clay-hover hover:text-clay-hover"
+          className="border-b border-sea pb-0.5 font-mono text-sm text-sea transition-colors hover:border-sea-hover hover:text-sea-hover"
         >
           Home
         </Link>
         <Link
           href="/projects"
-          className="border-b border-rule-strong pb-0.5 font-mono text-sm transition-colors hover:border-clay hover:text-clay"
+          className="border-b border-sea/40 pb-0.5 font-mono text-sm transition-colors hover:border-sea hover:text-sea"
         >
           Projects
         </Link>
         <Link
           href="/work"
-          className="border-b border-rule-strong pb-0.5 font-mono text-sm transition-colors hover:border-clay hover:text-clay"
+          className="border-b border-sea/40 pb-0.5 font-mono text-sm transition-colors hover:border-sea hover:text-sea"
         >
           Work
         </Link>

@@ -31,7 +31,7 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
       <Container className="pt-14 pb-16 sm:pt-20">
         <Link
           href="/projects"
-          className="eyebrow transition-colors hover:text-clay"
+          className="eyebrow transition-colors hover:text-sea"
         >
           ← Projects
         </Link>
@@ -41,14 +41,14 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
             <span className="eyebrow">{project.category}</span>
             <span className="tabular text-xs text-muted">{project.year}</span>
             {project.live ? (
-              <span className="inline-flex items-center gap-1.5 font-mono text-[0.6rem] uppercase tracking-widest text-clay">
-                <span className="h-1.5 w-1.5 rounded-full bg-clay" />
+              <span className="inline-flex items-center gap-1.5 font-mono text-[0.6rem] tracking-widest text-sea">
+                <span className="h-1.5 w-1.5 rounded-full bg-sea" />
                 Live
               </span>
             ) : null}
           </div>
 
-          <h1 className="mt-4 font-display display-wide text-[clamp(2rem,6.5vw,3.75rem)] font-bold uppercase leading-[0.92] tracking-tight">
+          <h1 className="mt-4 font-display display-wide text-[clamp(2rem,6.5vw,3.75rem)] font-bold leading-[0.92] tracking-tight">
             {project.title}
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-soft sm:text-xl">
@@ -63,7 +63,7 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
                 href={project.access.repo}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="border-b border-clay pb-0.5 font-mono text-sm text-clay transition-colors hover:border-clay-hover hover:text-clay-hover"
+                className="border-b border-sea pb-0.5 font-mono text-sm text-sea transition-colors hover:border-sea-hover hover:text-sea-hover"
               >
                 View source on GitHub →
               </a>
@@ -105,7 +105,7 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
               <ul className="mt-4 space-y-4">
                 {project.approach.map((step, i) => (
                   <li key={i} className="flex gap-4">
-                    <span className="tabular mt-1 shrink-0 text-xs text-clay">
+                    <span className="tabular mt-1 shrink-0 text-xs text-sea">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="leading-relaxed text-ink-soft">
@@ -128,10 +128,10 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
                   {project.chapters.map((c) => (
                     <li
                       key={c.name}
-                      className="border-l-2 border-rule-strong pl-5"
+                      className="border-l-2 border-sea/40 pl-5"
                     >
                       <div className="flex flex-wrap items-baseline gap-3">
-                        <span className="tabular text-xs text-clay">
+                        <span className="tabular text-xs text-sea">
                           {c.year}
                         </span>
                         <h3 className="font-display text-base font-semibold">
@@ -142,7 +142,7 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
                         {c.what}
                       </p>
                       <p className="mt-2 text-[0.95rem] leading-relaxed text-muted">
-                        <span className="font-mono text-[0.65rem] uppercase tracking-widest">
+                        <span className="font-mono text-[0.65rem] tracking-widest">
                           Took away ·{" "}
                         </span>
                         {c.learned}
@@ -152,7 +152,7 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
                           href={c.repo}
                           target="_blank"
                           rel="noreferrer noopener"
-                          className="mt-2 inline-block font-mono text-xs text-clay transition-colors hover:text-clay-hover"
+                          className="mt-2 inline-block font-mono text-xs text-sea transition-colors hover:text-sea-hover"
                         >
                           Source →
                         </a>
@@ -165,7 +165,7 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
           </div>
 
           <aside className="lg:sticky lg:top-24 lg:self-start">
-            <h2 className="eyebrow border-b border-rule pb-3">Built with</h2>
+            <h2 className="eyebrow">Built with</h2>
             <div className="mt-4 flex flex-wrap gap-2">
               {project.stack.map((s) => (
                 <Tag key={s}>{s}</Tag>

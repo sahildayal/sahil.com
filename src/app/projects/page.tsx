@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <Container className="pt-14 pb-8 sm:pt-20">
-      <h1 className="font-display display-wide text-[clamp(2.25rem,7vw,4rem)] font-bold uppercase leading-[0.9] tracking-tight">
+      <h1 className="font-display display-wide text-[clamp(2.25rem,7vw,4rem)] font-bold leading-[0.9] tracking-tight">
         Projects
       </h1>
       <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-soft">

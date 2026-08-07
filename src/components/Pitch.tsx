@@ -8,7 +8,7 @@ export function Pitch({
   formation: string;
 }) {
   return (
-    <div className="relative w-full overflow-hidden border border-rule bg-pitch-wash">
+    <div className="relative w-full overflow-hidden rounded-[var(--radius-card)] bg-pitch-wash">
       {/* Pitch markings. Portrait so it stays readable on a phone. */}
       <div className="relative aspect-[3/4] w-full sm:aspect-[4/3]">
         <svg

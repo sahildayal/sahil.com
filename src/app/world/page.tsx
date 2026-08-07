@@ -9,6 +9,7 @@ import {
   offPitch,
 } from "@/content/world";
 import { Pitch } from "@/components/Pitch";
+import { TideLine } from "@/components/TideLine";
 import { Container, SectionHead } from "@/components/primitives";
 import { Reveal } from "@/components/Reveal";
 
@@ -22,12 +23,12 @@ export default function WorldPage() {
   return (
     <Container className="pt-14 pb-8 sm:pt-20">
       {/* ---------- programme masthead ---------- */}
-      <header className="border-b-2 border-ink pb-6">
+      <header className="pb-2">
         <div className="flex flex-wrap items-baseline justify-between gap-3">
           <span className="eyebrow">Matchday programme</span>
           <span className="tabular text-xs text-muted">2026</span>
         </div>
-        <h1 className="mt-4 font-display display-wide text-[clamp(2.25rem,9vw,5rem)] font-bold uppercase leading-[0.88] tracking-tight">
+        <h1 className="mt-4 font-display display-wide text-[clamp(2.25rem,9vw,5rem)] font-bold leading-[0.88] tracking-tight">
           Off the
           <br />
           clock
@@ -37,6 +38,8 @@ export default function WorldPage() {
           tools I&apos;d actually put on the teamsheet.
         </p>
       </header>
+
+      <TideLine seed={0} className="mt-8" />
 
       {/* ---------- starting XI ---------- */}
       <section className="mt-16">
@@ -72,21 +75,21 @@ export default function WorldPage() {
               Two matches, updated as the season goes. The predictor has an
               opinion on most of these — it&apos;s usually wrong about the draw.
             </p>
-            <ul className="mt-6 divide-y divide-rule border-y border-rule">
+            <ul className="mt-6 space-y-2">
               {fixtures.slice(0, MAX_FIXTURES).map((f, i) => (
                 <li
                   key={i}
                   className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 py-5"
                 >
                   <div className="min-w-0">
-                    <p className="font-display text-base font-semibold uppercase tracking-wide sm:text-lg">
+                    <p className="font-display text-base font-semibold tracking-wide sm:text-lg">
                       {f.home} <span className="text-muted">v</span> {f.away}
                     </p>
                     {f.note ? <p className="eyebrow mt-1.5">{f.note}</p> : null}
                   </div>
                   <div className="flex shrink-0 items-baseline gap-3">
                     <span className="tabular text-xs text-muted">{f.date}</span>
-                    <span className="tabular text-lg text-clay">
+                    <span className="tabular text-lg text-sea">
                       {f.kickoff}
                     </span>
                   </div>
@@ -112,13 +115,13 @@ export default function WorldPage() {
           </p>
         </Reveal>
         <Reveal>
-          <ul className="mt-6 grid grid-cols-2 gap-px border border-rule bg-rule sm:grid-cols-3 lg:grid-cols-4">
+          <ul className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
             {caps.map((cap) => (
-              <li key={cap.country} className="bg-paper p-4">
+              <li key={cap.country} className="rounded-[var(--radius-card)] bg-paper-raised p-4">
                 {/* The ISO code, not a flag emoji — Windows has no flag font,
                     so emoji would render differently per platform. */}
                 <div className="flex items-baseline justify-between gap-2">
-                  <span className="tabular text-sm font-semibold text-clay">
+                  <span className="tabular text-sm font-semibold text-sea">
                     {cap.code}
                   </span>
                   <span className="tabular text-[0.65rem] text-muted">
@@ -145,9 +148,9 @@ export default function WorldPage() {
             {offPitch.map((item) => (
               <div
                 key={item.title}
-                className="border-t border-rule-strong pt-4"
+                className="pt-1"
               >
-                <h3 className="font-display text-sm font-semibold uppercase tracking-wide">
+                <h3 className="font-display text-sm font-semibold tracking-wide">
                   {item.title}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-soft">

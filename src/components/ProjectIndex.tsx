@@ -19,7 +19,7 @@ export function ProjectIndex({ projects }: { projects: Project[] }) {
       <div
         role="group"
         aria-label="Filter projects by category"
-        className="flex flex-wrap gap-x-5 gap-y-2 border-b border-rule pb-4"
+        className="flex flex-wrap gap-x-5 gap-y-2 pb-1"
       >
         {filters.map((filter) => {
           const count =
@@ -33,8 +33,8 @@ export function ProjectIndex({ projects }: { projects: Project[] }) {
               type="button"
               onClick={() => setActive(filter)}
               aria-pressed={isActive}
-              className={`eyebrow transition-colors hover:text-clay ${
-                isActive ? "text-clay" : ""
+              className={`eyebrow transition-colors hover:text-sea ${
+                isActive ? "text-sea" : ""
               }`}
             >
               {filter}{" "}

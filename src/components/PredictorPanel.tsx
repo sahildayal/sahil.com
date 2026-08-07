@@ -36,12 +36,12 @@ export async function PredictorPanel() {
 
   return (
     <Reveal>
-      <section className="border border-rule bg-paper-raised p-6 sm:p-8">
-        <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-rule pb-4">
+      <section className="rounded-[var(--radius-card)] bg-paper-raised p-6 sm:p-8">
+        <div className="flex flex-wrap items-baseline justify-between gap-3">
           <div className="flex items-center gap-2">
             <span
               className={`h-1.5 w-1.5 rounded-full ${
-                predictions ? "bg-clay" : "bg-muted"
+                predictions ? "bg-sea" : "bg-muted"
               }`}
               aria-hidden="true"
             />
@@ -51,7 +51,7 @@ export async function PredictorPanel() {
           </div>
           <Link
             href="/projects/football-forecasting"
-            className="eyebrow transition-colors hover:text-clay"
+            className="eyebrow transition-colors hover:text-sea"
           >
             How it works →
           </Link>
@@ -62,7 +62,7 @@ export async function PredictorPanel() {
             {predictions.slice(0, 3).map((p) => (
               <li key={`${p.home}-${p.away}`}>
                 <div className="flex items-baseline justify-between gap-4">
-                  <p className="font-display text-sm font-semibold uppercase tracking-wide">
+                  <p className="font-display text-sm font-semibold tracking-wide">
                     {p.home} <span className="text-muted">v</span> {p.away}
                   </p>
                   <span className="tabular text-xs text-muted">{p.kickoff}</span>
@@ -74,7 +74,7 @@ export async function PredictorPanel() {
                     aria-label={`${Math.round(p.homeWinProbability * 100)} percent home win probability`}
                   >
                     <div
-                      className="h-full bg-clay"
+                      className="h-full bg-sea"
                       style={{ width: `${p.homeWinProbability * 100}%` }}
                     />
                   </div>
@@ -87,7 +87,7 @@ export async function PredictorPanel() {
           </ul>
         ) : (
           <div className="mt-6">
-            <p className="font-display display-wide text-xl font-bold uppercase leading-tight sm:text-2xl">
+            <p className="font-display display-wide text-xl font-bold leading-tight sm:text-2xl">
               Predicting football,
               <br />
               three times over
@@ -99,7 +99,7 @@ export async function PredictorPanel() {
             </p>
             <Link
               href="/projects/football-forecasting"
-              className="mt-5 inline-block border-b border-clay pb-0.5 font-mono text-sm text-clay transition-colors hover:border-clay-hover hover:text-clay-hover"
+              className="mt-5 inline-block border-b border-sea pb-0.5 font-mono text-sm text-sea transition-colors hover:border-sea-hover hover:text-sea-hover"
             >
               Read the case study
             </Link>

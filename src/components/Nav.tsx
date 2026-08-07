@@ -18,20 +18,20 @@ const links = [
  * wrap so it can never spill off-screen.
  */
 const itemClass =
-  "font-mono text-[0.625rem] uppercase leading-none tracking-[0.08em] text-muted transition-colors hover:text-clay sm:text-[0.6875rem] sm:tracking-[0.14em]";
+  "font-mono text-[0.625rem] leading-none tracking-[0.08em] text-muted transition-colors hover:text-sea sm:text-[0.6875rem] sm:tracking-[0.14em]";
 
 export function Nav() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-40 border-b border-rule bg-paper/85 backdrop-blur-md">
+    <header className="sticky top-0 z-40 bg-paper/88 backdrop-blur-md">
       <nav
         aria-label="Primary"
         className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-3 gap-y-2 px-4 py-3.5 sm:gap-x-4 sm:px-8"
       >
         <Link
           href="/"
-          className="font-display display-narrow shrink-0 text-sm font-bold uppercase tracking-[0.16em] transition-colors hover:text-clay"
+          className="font-display display-narrow shrink-0 text-sm font-bold tracking-[0.16em] transition-colors hover:text-sea"
         >
           <span className="sm:hidden">SD</span>
           <span className="hidden sm:inline">Sahil Dayal</span>
@@ -47,7 +47,7 @@ export function Nav() {
                   <Link
                     href={link.href}
                     aria-current={active ? "page" : undefined}
-                    className={`${itemClass} ${active ? "text-clay" : ""}`}
+                    className={`${itemClass} ${active ? "text-sea" : ""}`}
                   >
                     {link.label}
                   </Link>
@@ -56,7 +56,7 @@ export function Nav() {
             })}
           </ul>
           <span
-            className="hidden h-3 w-px bg-rule-strong sm:block"
+            className="hidden h-3 w-px bg-sea/30 sm:block"
             aria-hidden="true"
           />
           <ThemeToggle className={itemClass} />

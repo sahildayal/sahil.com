@@ -2,110 +2,145 @@
 
 /* ============================================================
    Sahil Dayal — portfolio
-   Palette: "Terracotta & Ink"
-   Type:    Archivo (signage grotesque, width axis) / Newsreader
-            (long-form) / JetBrains Mono (data + tabular numerals)
+   Palette: "Mutrah Corniche" — Muscat by day. Sun-bleached
+   plaster, wet-rock ink, Gulf teal, Hajar ochre. The warmth
+   comes from stone and brass, never from beige paper.
+   Type: Fraunces (display, wonk on) / Newsreader (long-form)
+   / JetBrains Mono (numbers and data only)
    ============================================================ */
 
 :root {
   color-scheme: light;
 
-  /* ground */
-  --c-paper: #fbf7f0;
-  --c-paper-raised: #f3eee4;
-  --c-paper-sunk: #eae3d6;
+  /* ground — plaster in full sun */
+  --c-paper: #eceee8;
+  --c-paper-raised: #e1e5de;
+  --c-paper-sunk: #d7dcd4;
 
-  /* type */
-  --c-ink: #14181f;
-  --c-ink-soft: #3a4048;
-  --c-muted: #6f6860;
+  /* type — wet rock */
+  --c-ink: #14262b;
+  --c-ink-soft: #33474c;
+  --c-muted: #5d6d6e;
 
   /* structure */
-  --c-rule: #ded6c7;
-  --c-rule-strong: #c3b8a4;
+  --c-rule: #cbd2cc;
+  --c-rule-strong: #aeb8b1;
 
-  /* accent */
-  --c-clay: #b34a22;
-  --c-clay-hover: #8f3a19;
-  --c-clay-wash: #f6e5dc;
+  /* the sea — primary accent */
+  --c-sea: #0e5a63;
+  --c-sea-hover: #0a464d;
+  --c-sea-wash: #dce7e6;
 
-  /* reserved for /world — football furniture only */
-  --c-pitch: #1d4d3b;
-  --c-pitch-wash: #e3ece7;
+  /* the rock — warm secondary. `rock` passes as body text,
+     `rock-bright` is for fills and marks only. */
+  --c-rock: #8a4f14;
+  --c-rock-bright: #a9631e;
+  --c-rock-wash: #eee3d5;
 
-  /* split-flap board */
-  --c-flap: #1a1d24;
-  --c-flap-face: #f4efe6;
-  --c-flap-seam: #0b0d11;
+  /* the pitch, on /world only */
+  --c-pitch: #2f5f52;
+  --c-pitch-wash: #dce7e3;
+
+  /* the board — brass on deep water */
+  --c-flap: #0a2a30;
+  --c-flap-face: #e9c481;
+  --c-flap-seam: #04161a;
+
+  /* horizon bands */
+  --c-sky: #dfe7e6;
+  --c-ridge: #9aa6a2;
+  --c-water: #b9cbc9;
+
+  --radius: 5px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
 
-    --c-paper: #14181f;
-    --c-paper-raised: #1c222b;
-    --c-paper-sunk: #0f1319;
+    --c-paper: #0b2429;
+    --c-paper-raised: #123037;
+    --c-paper-sunk: #071a1e;
 
-    --c-ink: #f0ebe3;
-    --c-ink-soft: #c4beb4;
-    --c-muted: #9a9288;
+    --c-ink: #e4eae4;
+    --c-ink-soft: #bcc7c3;
+    --c-muted: #8a9a99;
 
-    --c-rule: #2a313b;
-    --c-rule-strong: #3d4753;
+    --c-rule: #1e3a42;
+    --c-rule-strong: #2f535c;
 
-    --c-clay: #e4693a;
-    --c-clay-hover: #f18354;
-    --c-clay-wash: #2e1d16;
+    --c-sea: #58b4bc;
+    --c-sea-hover: #7bc9cf;
+    --c-sea-wash: #10343a;
 
-    --c-pitch: #4e9c7d;
-    --c-pitch-wash: #16241e;
+    --c-rock: #d28d3c;
+    --c-rock-bright: #e3a257;
+    --c-rock-wash: #2a1d10;
 
-    --c-flap: #05070a;
-    --c-flap-face: #ece6dc;
+    --c-pitch: #5fa894;
+    --c-pitch-wash: #10282a;
+
+    --c-flap: #061a1f;
+    --c-flap-face: #e9c481;
     --c-flap-seam: #000;
+
+    --c-sky: #0f2b31;
+    --c-ridge: #17383f;
+    --c-water: #123b42;
   }
 }
 
-/* Explicit toggle wins over the OS preference, in both directions. */
+/* An explicit choice wins over the OS preference, both ways. */
 :root[data-theme="light"] {
   color-scheme: light;
-  --c-paper: #fbf7f0;
-  --c-paper-raised: #f3eee4;
-  --c-paper-sunk: #eae3d6;
-  --c-ink: #14181f;
-  --c-ink-soft: #3a4048;
-  --c-muted: #6f6860;
-  --c-rule: #ded6c7;
-  --c-rule-strong: #c3b8a4;
-  --c-clay: #b34a22;
-  --c-clay-hover: #8f3a19;
-  --c-clay-wash: #f6e5dc;
-  --c-pitch: #1d4d3b;
-  --c-pitch-wash: #e3ece7;
-  --c-flap: #1a1d24;
-  --c-flap-face: #f4efe6;
-  --c-flap-seam: #0b0d11;
+  --c-paper: #eceee8;
+  --c-paper-raised: #e1e5de;
+  --c-paper-sunk: #d7dcd4;
+  --c-ink: #14262b;
+  --c-ink-soft: #33474c;
+  --c-muted: #5d6d6e;
+  --c-rule: #cbd2cc;
+  --c-rule-strong: #aeb8b1;
+  --c-sea: #0e5a63;
+  --c-sea-hover: #0a464d;
+  --c-sea-wash: #dce7e6;
+  --c-rock: #8a4f14;
+  --c-rock-bright: #a9631e;
+  --c-rock-wash: #eee3d5;
+  --c-pitch: #2f5f52;
+  --c-pitch-wash: #dce7e3;
+  --c-flap: #0a2a30;
+  --c-flap-face: #e9c481;
+  --c-flap-seam: #04161a;
+  --c-sky: #dfe7e6;
+  --c-ridge: #9aa6a2;
+  --c-water: #b9cbc9;
 }
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --c-paper: #14181f;
-  --c-paper-raised: #1c222b;
-  --c-paper-sunk: #0f1319;
-  --c-ink: #f0ebe3;
-  --c-ink-soft: #c4beb4;
-  --c-muted: #9a9288;
-  --c-rule: #2a313b;
-  --c-rule-strong: #3d4753;
-  --c-clay: #e4693a;
-  --c-clay-hover: #f18354;
-  --c-clay-wash: #2e1d16;
-  --c-pitch: #4e9c7d;
-  --c-pitch-wash: #16241e;
-  --c-flap: #05070a;
-  --c-flap-face: #ece6dc;
+  --c-paper: #0b2429;
+  --c-paper-raised: #123037;
+  --c-paper-sunk: #071a1e;
+  --c-ink: #e4eae4;
+  --c-ink-soft: #bcc7c3;
+  --c-muted: #8a9a99;
+  --c-rule: #1e3a42;
+  --c-rule-strong: #2f535c;
+  --c-sea: #58b4bc;
+  --c-sea-hover: #7bc9cf;
+  --c-sea-wash: #10343a;
+  --c-rock: #d28d3c;
+  --c-rock-bright: #e3a257;
+  --c-rock-wash: #2a1d10;
+  --c-pitch: #5fa894;
+  --c-pitch-wash: #10282a;
+  --c-flap: #061a1f;
+  --c-flap-face: #e9c481;
   --c-flap-seam: #000;
+  --c-sky: #0f2b31;
+  --c-ridge: #17383f;
+  --c-water: #123b42;
 }
 
 @theme inline {
@@ -117,27 +152,29 @@
   --color-muted: var(--c-muted);
   --color-rule: var(--c-rule);
   --color-rule-strong: var(--c-rule-strong);
-  --color-clay: var(--c-clay);
-  --color-clay-hover: var(--c-clay-hover);
-  --color-clay-wash: var(--c-clay-wash);
+  --color-sea: var(--c-sea);
+  --color-sea-hover: var(--c-sea-hover);
+  --color-sea-wash: var(--c-sea-wash);
+  --color-rock: var(--c-rock);
+  --color-rock-bright: var(--c-rock-bright);
+  --color-rock-wash: var(--c-rock-wash);
   --color-pitch: var(--c-pitch);
   --color-pitch-wash: var(--c-pitch-wash);
   --color-flap: var(--c-flap);
   --color-flap-face: var(--c-flap-face);
   --color-flap-seam: var(--c-flap-seam);
+  --color-sky: var(--c-sky);
+  --color-ridge: var(--c-ridge);
+  --color-water: var(--c-water);
 
-  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
   --font-body: var(--font-newsreader), ui-serif, Georgia, serif;
   --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
+
+  --radius-card: 5px;
 }
 
 /* ---------- base ---------- */
-
-*,
-*::before,
-*::after {
-  border-color: var(--c-rule);
-}
 
 body {
   background-color: var(--c-paper);
@@ -148,60 +185,53 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Newsprint tooth. Matchday programmes are printed on cheap stock —
-   this keeps the light ground from reading as flat digital cream. */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-@media (prefers-color-scheme: dark) {
-  body::before {
-    opacity: 0.05;
-  }
-}
-
-:root[data-theme="dark"] body::before {
-  opacity: 0.05;
-}
-
-:root[data-theme="light"] body::before {
-  opacity: 0.035;
-}
-
-/* Display type is signage: set wide and heavy at large sizes. */
+/* Display is Fraunces with the wonk axis on — the letterforms are
+   deliberately a little off, which is the point. Set in sentence case;
+   giant uppercase grotesque is the look we're getting away from. */
 .font-display {
   font-family: var(--font-display);
-  font-variation-settings: "wdth" 100;
+  font-variation-settings:
+    "SOFT" 40,
+    "WONK" 1,
+    "opsz" 60;
+  letter-spacing: -0.015em;
 }
 
+/* Kept as names so existing markup keeps working; they now move the
+   optical-size and softness axes rather than width. */
 .display-wide {
-  font-variation-settings: "wdth" 115;
+  font-variation-settings:
+    "SOFT" 70,
+    "WONK" 1,
+    "opsz" 144;
+  letter-spacing: -0.03em;
 }
 
 .display-narrow {
-  font-variation-settings: "wdth" 80;
+  font-variation-settings:
+    "SOFT" 20,
+    "WONK" 0,
+    "opsz" 20;
+  letter-spacing: 0.005em;
 }
 
-/* Numbers carry meaning on this site — set them properly. */
+/* Numbers carry real meaning here — set them properly. */
 .tabular {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum" 1;
 }
 
+/* Section labels. Was spaced-out mono caps, which is the single most
+   common generated-design tic; now a quiet italic in the sea colour. */
 .eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  line-height: 1;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--c-muted);
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.9375rem;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--c-sea);
 }
 
 /* Long-form case-study prose. */
@@ -220,13 +250,13 @@ body::before {
 /* ---------- quality floor ---------- */
 
 :focus-visible {
-  outline: 2px solid var(--c-clay);
+  outline: 2px solid var(--c-sea);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
 ::selection {
-  background: var(--c-clay);
+  background: var(--c-sea);
   color: var(--c-paper);
 }
 

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function WorkPage() {
   return (
     <Container className="pt-14 pb-8 sm:pt-20">
-      <h1 className="font-display display-wide text-[clamp(2.25rem,7vw,4rem)] font-bold uppercase leading-[0.9] tracking-tight">
+      <h1 className="font-display display-wide text-[clamp(2.25rem,7vw,4rem)] font-bold leading-[0.9] tracking-tight">
         Work
       </h1>
       <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-soft">
@@ -23,7 +23,7 @@ export default function WorkPage() {
         {experience.map((role) => (
           <Reveal key={role.id}>
             <section>
-              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-rule pb-3">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                 <span className="eyebrow">
                   {role.company}
                   {role.team ? ` · ${role.team}` : ""}
@@ -31,7 +31,7 @@ export default function WorkPage() {
                 <span className="tabular text-xs text-muted">
                   {role.start} — {role.end}
                   {role.current ? (
-                    <span className="ml-2 text-clay">now</span>
+                    <span className="ml-2 text-sea">now</span>
                   ) : null}
                 </span>
               </div>
@@ -39,14 +39,14 @@ export default function WorkPage() {
               <h2 className="mt-5 font-display text-2xl font-semibold leading-tight sm:text-3xl">
                 {role.title}
               </h2>
-              <p className="mt-2 text-lg text-clay">{role.headline}</p>
+              <p className="mt-2 text-lg text-sea">{role.headline}</p>
               <p className="eyebrow mt-2">{role.location}</p>
 
               <ul className="mt-6 max-w-2xl space-y-4">
                 {role.bullets.map((bullet, i) => (
                   <li key={i} className="flex gap-4">
                     <span
-                      className="mt-2.5 h-px w-4 shrink-0 bg-rule-strong"
+                      className="mt-2.5 h-px w-4 shrink-0 bg-sea/50"
                       aria-hidden="true"
                     />
                     <span className="leading-relaxed text-ink-soft">
@@ -78,7 +78,7 @@ export default function WorkPage() {
             every agent failure I&apos;ve debugged was a state-management failure
             wearing a costume.
           </p>
-          <dl className="mt-8 divide-y divide-rule border-t border-rule">
+          <dl className="mt-8 space-y-1">
             {agenticPrinciples.map((p) => (
               <div
                 key={p.pattern}

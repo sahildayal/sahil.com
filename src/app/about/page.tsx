@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <Container className="pt-14 pb-8 sm:pt-20">
-      <h1 className="font-display display-wide text-[clamp(2.25rem,7vw,4rem)] font-bold uppercase leading-[0.9] tracking-tight">
+      <h1 className="font-display display-wide text-[clamp(2.25rem,7vw,4rem)] font-bold leading-[0.9] tracking-tight">
         About
       </h1>
 
@@ -29,7 +29,7 @@ export default function AboutPage() {
             <Reveal>
               <a
                 href={resumeUrl}
-                className="inline-block border-b border-clay pb-0.5 font-mono text-sm text-clay transition-colors hover:border-clay-hover hover:text-clay-hover"
+                className="inline-block border-b border-sea pb-0.5 font-mono text-sm text-sea transition-colors hover:border-sea-hover hover:text-sea-hover"
               >
                 Download resume (PDF) →
               </a>
@@ -45,7 +45,7 @@ export default function AboutPage() {
               width={545}
               height={573}
               sizes="(min-width: 1024px) 16rem, 60vw"
-              className="w-full max-w-[16rem] border border-rule object-cover"
+              className="w-full max-w-[16rem] rounded-[var(--radius-card)] object-cover"
               priority
             />
             <figcaption className="eyebrow mt-3">{profile.location}</figcaption>
@@ -85,7 +85,7 @@ export default function AboutPage() {
 
             <div className="mt-8 grid gap-8 sm:grid-cols-2">
               <div>
-                <h3 className="eyebrow border-b border-rule pb-2">
+                <h3 className="eyebrow">
                   Relevant coursework
                 </h3>
                 <ul className="mt-3 space-y-2">
@@ -100,7 +100,7 @@ export default function AboutPage() {
                 </ul>
               </div>
               <div>
-                <h3 className="eyebrow border-b border-rule pb-2">
+                <h3 className="eyebrow">
                   Taking now — Fall 2026
                 </h3>
                 <ul className="mt-3 space-y-2">
@@ -148,7 +148,7 @@ export default function AboutPage() {
             eyebrow="Certifications"
             meta={`${profile.certifications.length}`}
           />
-          <ul className="mt-2 divide-y divide-rule">
+          <ul className="mt-2 space-y-1">
             {profile.certifications.map((cert) => (
               <li
                 key={cert.name}
@@ -174,7 +174,7 @@ export default function AboutPage() {
             the piano.{" "}
             <Link
               href="/world"
-              className="border-b border-clay pb-0.5 text-clay transition-colors hover:border-clay-hover hover:text-clay-hover"
+              className="border-b border-sea pb-0.5 text-sea transition-colors hover:border-sea-hover hover:text-sea-hover"
             >
               It&apos;s laid out like a matchday programme.
             </Link>

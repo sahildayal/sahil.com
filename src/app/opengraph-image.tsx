@@ -24,7 +24,7 @@ export default async function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#14181f",
+          background: "#0b2429",
           padding: "72px 80px",
         }}
       >
@@ -33,7 +33,7 @@ export default async function OpenGraphImage() {
             style={{
               fontSize: 22,
               letterSpacing: 6,
-              color: "#9a9288",
+              color: "#8a9a99",
               textTransform: "uppercase",
             }}
           >
@@ -43,7 +43,7 @@ export default async function OpenGraphImage() {
             style={{
               fontSize: 132,
               fontWeight: 800,
-              color: "#f0ebe3",
+              color: "#e4eae4",
               lineHeight: 1,
               marginTop: 24,
               letterSpacing: -3,
@@ -54,7 +54,7 @@ export default async function OpenGraphImage() {
           <div
             style={{
               fontSize: 30,
-              color: "#c4beb4",
+              color: "#bcc7c3",
               marginTop: 28,
               maxWidth: 820,
               lineHeight: 1.35,
@@ -72,7 +72,7 @@ export default async function OpenGraphImage() {
               display: "flex",
               alignItems: "center",
               gap: 18,
-              background: "#05070a",
+              background: "#061a1f",
               padding: "14px 18px",
               borderRadius: 4,
             }}
@@ -88,8 +88,8 @@ export default async function OpenGraphImage() {
                       justifyContent: "center",
                       width: 30,
                       height: 44,
-                      background: "#14181f",
-                      color: "#ece6dc",
+                      background: "#0b2429",
+                      color: "#e9c481",
                       fontSize: 24,
                       fontWeight: 600,
                       borderRadius: 3,
@@ -105,7 +105,7 @@ export default async function OpenGraphImage() {
             style={{
               marginLeft: "auto",
               fontSize: 26,
-              color: "#e4693a",
+              color: "#d28d3c",
               letterSpacing: 1,
             }}
           >
