@@ -217,18 +217,6 @@ body::before {
   font-weight: 600;
 }
 
-/* Card unlock on the match pitch. */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
 /* ---------- quality floor ---------- */
 
 :focus-visible {

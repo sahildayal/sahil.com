@@ -9,7 +9,6 @@ import {
   offPitch,
 } from "@/content/world";
 import { Pitch } from "@/components/Pitch";
-import { MatchLauncher } from "@/components/match/MatchLauncher";
 import { Container, SectionHead } from "@/components/primitives";
 import { Reveal } from "@/components/Reveal";
 
@@ -38,13 +37,6 @@ export default function WorldPage() {
           tools I&apos;d actually put on the teamsheet.
         </p>
       </header>
-
-      {/* ---------- the match ---------- */}
-      <section className="mt-10">
-        <Reveal>
-          <MatchLauncher />
-        </Reveal>
-      </section>
 
       {/* ---------- starting XI ---------- */}
       <section className="mt-16">
