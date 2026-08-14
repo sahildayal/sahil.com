@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const ALPHABET = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-.&";
 
@@ -122,23 +122,54 @@ export function SplitFlap({
 }) {
   const [index, setIndex] = useState(0);
   const reduced = usePrefersReducedMotion();
+  const boardRef = useRef<HTMLDivElement | null>(null);
+  const [awake, setAwake] = useState(true);
 
   const leftWidth = Math.max(...rows.map((r) => r.left.length));
   const rightWidth = Math.max(...rows.map((r) => r.right.length));
 
+  const advance = useCallback(
+    () => setIndex((i) => (i + 1) % rows.length),
+    [rows.length],
+  );
+
+  /* The board used to flip forever, including scrolled out of view and in a
+     background tab. Now it sleeps unless it's actually on screen and the tab
+     is in front. */
   useEffect(() => {
-    if (reduced || rows.length <= 1) return;
-    const id = setInterval(
-      () => setIndex((i) => (i + 1) % rows.length),
-      interval,
+    const el = boardRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+
+    const io = new IntersectionObserver(
+      ([entry]) => setAwake(entry.isIntersecting && !document.hidden),
+      { threshold: 0.1 },
     );
+    io.observe(el);
+
+    const onVisibility = () =>
+      setAwake(!document.hidden && el.getBoundingClientRect().top < window.innerHeight);
+    document.addEventListener("visibilitychange", onVisibility);
+
+    return () => {
+      io.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (reduced || rows.length <= 1 || !awake) return;
+    const id = setInterval(advance, interval);
     return () => clearInterval(id);
-  }, [rows.length, interval, reduced]);
+  }, [rows.length, interval, reduced, awake, advance]);
 
   const row = rows[index];
 
   return (
-    <div className="inline-block max-w-full overflow-x-auto">
+    <div
+      ref={boardRef}
+      className="inline-block max-w-full overflow-x-auto"
+      onMouseEnter={() => !reduced && advance()}
+    >
       {/* The live region carries the text; the flaps themselves are aria-hidden
           so a screen reader gets the message, not forty individual letters. */}
       <p className="sr-only" aria-live="polite">

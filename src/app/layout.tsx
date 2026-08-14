@@ -4,6 +4,8 @@ import { Analytics } from "@vercel/analytics/next";
 import { profile } from "@/content/profile";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import { CommandPalette } from "@/components/palette/CommandPalette";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -82,11 +84,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
+        <SmoothScroll />
         <Nav />
         <main id="main" className="relative z-10 flex-1">
           {children}
         </main>
         <Footer />
+        <CommandPalette />
         <Analytics />
       </body>
     </html>

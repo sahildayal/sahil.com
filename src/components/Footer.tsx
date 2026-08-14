@@ -1,5 +1,6 @@
 import { profile } from "@/content/profile";
 import { TideLine } from "./TideLine";
+import { CopyEmail } from "./CopyEmail";
 
 export function Footer() {
   return (
@@ -15,12 +16,7 @@ export function Footer() {
               {profile.availability}. Based in {profile.location}, open to
               relocation.
             </p>
-            <a
-              href={`mailto:${profile.email}`}
-              className="mt-4 inline-block border-b border-sea pb-0.5 font-mono text-sm text-sea transition-colors hover:border-sea-hover hover:text-sea-hover"
-            >
-              {profile.email}
-            </a>
+            <CopyEmail className="mt-4" />
           </div>
 
           <ul className="flex gap-6">

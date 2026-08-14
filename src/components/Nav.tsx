@@ -59,6 +59,16 @@ export function Nav() {
             className="hidden h-3 w-px bg-sea/30 sm:block"
             aria-hidden="true"
           />
+          {/* A palette nobody knows about helps nobody, so it gets one quiet
+              affordance. Hidden on small screens where there's no keyboard. */}
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new Event("palette:open"))}
+            aria-label="Open command palette"
+            className="tabular hidden shrink-0 rounded-[4px] bg-paper-raised px-1.5 py-0.5 text-[0.65rem] text-muted transition-colors hover:text-sea sm:block"
+          >
+            ⌘K
+          </button>
           <ThemeToggle className={itemClass} />
         </div>
       </nav>
