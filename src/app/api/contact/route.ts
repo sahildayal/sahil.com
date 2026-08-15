@@ -37,6 +37,19 @@ function rateLimited(ip: string) {
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+/**
+ * Strips a byte-order mark and surrounding whitespace from an env value.
+ *
+ * Secrets pasted through a dashboard or piped in from a shell routinely arrive
+ * with invisible characters attached. A BOM inside a header value throws
+ * "Cannot convert argument to a ByteString" at request time, which reads like
+ * an auth failure and is not — this endpoint lost an afternoon to exactly that.
+ */
+function clean(value: string | undefined): string | undefined {
+  const trimmed = value?.replace(/^\uFEFF/, "").trim();
+  return trimmed ? trimmed : undefined;
+}
+
 function escapeHtml(s: string) {
   return s
     .replace(/&/g, "&amp;")
@@ -46,7 +59,7 @@ function escapeHtml(s: string) {
 }
 
 export async function POST(req: Request) {
-  const key = process.env.RESEND_API_KEY;
+  const key = clean(process.env.RESEND_API_KEY);
   if (!key) {
     return NextResponse.json(
       {
@@ -117,8 +130,8 @@ export async function POST(req: Request) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: process.env.CONTACT_FROM ?? "Portfolio <onboarding@resend.dev>",
-        to: [process.env.CONTACT_TO ?? profile.email],
+        from: clean(process.env.CONTACT_FROM) ?? "Portfolio <onboarding@resend.dev>",
+        to: [clean(process.env.CONTACT_TO) ?? profile.email],
         reply_to: email,
         subject: `sahildayal.vercel.app — ${name}`,
         text: `From: ${name} <${email}>\n\n${message}`,
