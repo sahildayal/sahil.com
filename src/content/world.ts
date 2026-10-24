@@ -74,7 +74,7 @@ export const fixtures: Fixture[] = [
  * continents, and mostly national dishes rather than the export-menu version
  * of each cuisine.
  */
-export const capsTotal = 27;
+export const capsTotal = 37;
 
 export const caps: Cap[] = [
   { country: "Morocco", code: "MA", dish: "Lamb tagine", week: 1 },
@@ -104,6 +104,26 @@ export const caps: Cap[] = [
   { country: "Mexico", code: "MX", dish: "Cochinita pibil", week: 25 },
   { country: "Japan", code: "JP", dish: "Okonomiyaki", week: 26 },
   { country: "Egypt", code: "EG", dish: "Koshari", week: 27 },
+  { country: "Lebanon", code: "LB", dish: "Kibbeh bil sanieh", week: 28 },
+  { country: "South Korea", code: "KR", dish: "Budae jjigae", week: 29 },
+  { country: "Trinidad & Tobago", code: "TT", dish: "Doubles", week: 30 },
+  { country: "Laos", code: "LA", dish: "Larb", week: 31 },
+  { country: "Finland", code: "FI", dish: "Karjalanpiirakka", week: 32 },
+  { country: "Bolivia", code: "BO", dish: "Salte\u00f1as", week: 33 },
+  { country: "Tunisia", code: "TN", dish: "Brik", week: 34 },
+  { country: "Myanmar", code: "MM", dish: "Mohinga", week: 35 },
+  { country: "Armenia", code: "AM", dish: "Ghapama", week: 36 },
+  { country: "Iceland", code: "IS", dish: "Plokkfiskur", week: 37 },
+];
+
+/**
+ * The next three on the list. Planned, not cooked \u2014 kept in a separate
+ * array so nothing here can ever be mistaken for something already made.
+ */
+export const upcoming: { country: string; dish: string }[] = [
+  { country: "Colombia", dish: "Ajiaco" },
+  { country: "Mozambique", dish: "Matapa" },
+  { country: "Estonia", dish: "Mulgipuder" },
 ];
 
 /** The rest of the off-hours column. */

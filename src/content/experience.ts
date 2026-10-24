@@ -16,12 +16,12 @@ export const experience: Role[] = [
   {
     id: "paychex-2026",
     company: "Paychex, Inc.",
-    title: "Software Engineering Co-op",
+    title: "AI Software Engineering Co-op",
     team: "Python Rocks",
     location: "Rochester, NY",
     start: "Jan 2026",
-    end: "Aug 2026",
-    current: true,
+    end: "Present",
+    current: false,
     headline: "Agentic AI pipelines and developer tooling at Fortune 500 scale",
     bullets: [
       "Designed an 8-agent pipeline (GitHub Copilot CLI + MCP) automating the full OpenShift liveness/readiness probe migration and OpenTelemetry adoption lifecycle — cutting per-service time from 1–2 days to under 30 minutes across 8 production microservices.",
@@ -30,6 +30,7 @@ export const experience: Role[] = [
       "Extended an internal developer AI platform with 7+ production MCP integrations in Go — Webex (OAuth 2.0), Oracle via a custom TNS resolver, SQL Server, Grafana Tempo, Confluence attachments, Bitbucket reviewers, Jira sprints. Adopted by 50+ engineers.",
       "Engineered a security-first data access layer: PHI/PII redaction across 36+ HIPAA-aligned patterns, parameterized SQL injection prevention, SELECT-only enforcement, and append-only audit logging — validated with 128+ unit tests over fully mocked infrastructure.",
       "Served as Scrum Master for the intern team — ran standups, managed the Jira board, tracked sprint velocity.",
+      "Continuing part-time through the Fall 2026 semester alongside coursework.",
     ],
     stack: [
       "Go",

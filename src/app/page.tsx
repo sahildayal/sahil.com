@@ -76,10 +76,10 @@ export default function Home() {
             <span className="eyebrow">{current.team} team</span>
           </div>
           <p className="mt-3 max-w-2xl leading-relaxed text-ink-soft">
-            {current.headline}. Go MCP tooling used by 50+ engineers, an
-            eight-agent migration pipeline running across 8 production
-            microservices, and a data access layer that redacts PHI before
-            anything reads it.
+            Eight months full-time on the Python Rocks team, now continuing
+            part-time through the semester. Go MCP tooling used by 50+ engineers,
+            an eight-agent migration pipeline across 8 production microservices,
+            and a data access layer that redacts PHI before anything reads it.
           </p>
           <Link
             href="/work"
@@ -131,7 +131,7 @@ export default function Home() {
           <div className="mt-6 grid gap-8 sm:grid-cols-[1fr_auto] sm:items-end">
             <p className="max-w-xl text-lg leading-relaxed text-ink-soft">
               Every week I pick a country and cook something from it.
-              Twenty-seven weeks in, that&apos;s become the other half of how I
+              Thirty-seven weeks in, that&apos;s become the other half of how I
               think about this site — and it has its own page, laid out like a
               matchday programme.
             </p>

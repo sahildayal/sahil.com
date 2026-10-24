@@ -6,6 +6,7 @@ import {
   MAX_FIXTURES,
   caps,
   capsTotal,
+  upcoming,
   offPitch,
 } from "@/content/world";
 import { tourShots, kitchenShots } from "@/content/oman";
@@ -169,6 +170,12 @@ export default function WorldPage() {
               </li>
             ))}
           </ul>
+        </Reveal>
+        <Reveal>
+          <p className="mt-6 text-sm leading-relaxed text-muted">
+            <span className="eyebrow">Up next</span>{" "}
+            {upcoming.map((u) => `${u.country} (${u.dish})`).join(" \u00b7 ")}
+          </p>
         </Reveal>
       </section>
 

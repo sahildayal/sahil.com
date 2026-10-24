@@ -168,56 +168,6 @@ export const projects: Project[] = [
       "Complex join queries collapsed from 9.11 minutes to O(1) index lookups. The Spark debugging was the more valuable half: the failure looked like a memory limit and was actually a data-movement problem, which is a shape of bug I've recognized several times since.",
   },
   {
-    slug: "football-forecasting",
-    title: "Predicting Football, Three Times",
-    kicker: "Three years of being beaten by the draw",
-    year: "2025 – 2026",
-    category: "Machine Learning",
-    featured: true,
-    live: true,
-    access: {
-      kind: "public",
-      repo: "https://github.com/sahildayal/EPL_LALIGA_PREDICTOR",
-    },
-    stack: ["Python", "Scikit-Learn", "XGBoost", "Pandas", "NumPy", "Kalshi API"],
-    metrics: [
-      { value: "25", label: "seasons of match data" },
-      { value: "6", label: "models compared" },
-      { value: "3", label: "attempts, so far" },
-    ],
-    problem:
-      "Football is the sport I care most about and one of the harder things to predict, largely because of the draw. Home and away wins have signal you can find. Draws are where confident models go to be humbled — they're the minority class, and they look like whatever the model thinks a close match is.",
-    approach: [
-      "First attempt was a solo binary classifier — home win or not — over 2000–2019 Premier League data, with engineered form features and a betting simulation on top to check whether the accuracy translated into anything real. It mostly didn't, which was the point.",
-      "Second was an academic comparison with a team of four: six models (logistic regression, SVM, Gaussian discriminant analysis, random forest, XGBoost, and an MLP) over 25 seasons, predicting full home/draw/away outcomes and scorelines. The question was whether ensembles actually beat well-calibrated simple baselines on the draw class.",
-      "Third is the current one — extending to La Liga and the 2026 World Cup, with a Kalshi parlay engine attached.",
-    ],
-    outcome:
-      "The through-line is calibration over accuracy. A model that's 55% accurate and honest about its confidence is more useful than one that's 58% accurate and certain about everything — which is exactly the lesson the betting simulation in attempt one taught me the expensive way.",
-    chapters: [
-      {
-        year: "2025",
-        name: "Premier League betting model",
-        repo: "https://github.com/sahildayal/PremierLeagueMLProject",
-        what: "Solo. Binary home-win classifier over 2000–2019 data, with form features and an ROI simulation.",
-        learned: "Accuracy and profitability are different questions. Mine answered the former.",
-      },
-      {
-        year: "2025",
-        name: "Six-model comparison (CSCI 635)",
-        what: "Team of four. Logistic regression, SVM, GDA, random forest, XGBoost, MLP over 25 seasons — full H/D/A and scoreline prediction.",
-        learned: "Ensembles bought less over calibrated baselines than expected, especially on draws.",
-      },
-      {
-        year: "2026",
-        name: "World Cup predictor + Kalshi engine",
-        repo: "https://github.com/sahildayal/EPL_LALIGA_PREDICTOR",
-        what: "Current. EPL and La Liga extended to the 2026 World Cup, with a parlay engine on Kalshi markets.",
-        learned: "Still in progress — the market is a much harsher grader than a test set.",
-      },
-    ],
-  },
-  {
     slug: "keylogger-detection",
     title: "Keylogger Detection via OS Telemetry",
     kicker: "Catching a process by how it behaves, not what it is",
@@ -246,28 +196,6 @@ export const projects: Project[] = [
       "86% accuracy on the imbalanced set. `memory_rss`, `read_bytes`, `read_count`, and `num_handles` came out as the top signals — which makes sense: a keylogger's tell is a steady trickle of small reads and a handle it never lets go of.",
   },
   {
-    slug: "everyday-todo",
-    title: "Everyday",
-    kicker: "A to-do app that lives where I already am",
-    year: "2026",
-    category: "Tools",
-    featured: false,
-    access: {
-      kind: "closed",
-      note: "Private for now — described here, not published.",
-    },
-    stack: ["TypeScript", "Next.js", "Telegram Bot API", "SQLite"],
-    problem:
-      "Every to-do app I've tried fails the same way: capture costs more than the task. If adding an item means opening an app, the item doesn't get added.",
-    approach: [
-      "Made the primary interface a Telegram bot, because it's the app already open on my phone — capture is one message, no context switch.",
-      "Paired it with a web view for the things a chat interface is bad at: reordering, reviewing, and seeing the week at once.",
-      "Scoped auth to a single owner rather than building multi-tenancy for a user base of one.",
-    ],
-    outcome:
-      "In daily use. It's the smallest project here and the one I actually rely on, which is its own argument about scope.",
-  },
-  {
     slug: "magnus",
     title: "Magnus",
     kicker: "A personal assistant, rebuilt as I learned better",
@@ -289,51 +217,193 @@ export const projects: Project[] = [
       "Mostly interesting as a diff. The 2024 version and the 2026 version solve the same problem, and the distance between them is the clearest record I have of what two years changed.",
   },
   {
-    slug: "hireme",
-    title: "HireMe",
-    kicker: "A job search pipeline that deliberately never applies",
+    slug: "argus",
+    title: "Argus",
+    kicker: "Letting AI tools see the screen they're working on",
+    year: "2026",
+    category: "AI & Agents",
+    featured: true,
+    access: {
+      kind: "public",
+      repo: "https://github.com/sahildayal/argus",
+    },
+    stack: ["Python", "MCP Protocol", "Windows API", "uv", "GitHub Actions"],
+    metrics: [
+      { value: "6", label: "AI clients it registers with" },
+      { value: "PyPI", label: "published as argus-screens" },
+      { value: "MIT", label: "open source" },
+    ],
+    problem:
+      "Coding agents are blind. You can describe a layout bug, paste an error, crop a screenshot and upload it \u2014 but the tool you are talking to cannot simply look at the monitor the problem is on. On a multi-monitor Windows desktop that gap is constant, and working around it is tedious.",
+    approach: [
+      "Built an MCP server, a CLI and a system-tray app over one capture core, so the same code answers an agent, a terminal and a hotkey.",
+      "Made the targeting the hard part rather than the screenshot: a look() call skips the terminal or editor the agent is running inside and picks the window the person was actually using.",
+      "Added offline OCR through the Windows OCR engine, so text can be read out of a capture without anything leaving the machine and without any API key existing.",
+      "Shipped a small visual-regression kit \u2014 save a baseline, compare against it, wait for the screen to settle or for specific text to appear \u2014 which turns the same capture core into a test harness.",
+      "Set the public default to prompting before every capture. You opt out of consent explicitly with a flag; you do not opt in. Someone's screen is not a resource to take quietly.",
+      "Packaged it for real use: published to PyPI as argus-screens through Trusted Publishing, so no token is stored anywhere, with CI running on Windows.",
+    ],
+    outcome:
+      "Installs with one command and registers itself with six different AI clients. The decision I would defend hardest is the consent default \u2014 a screenshot tool that is quiet by default is a surveillance tool, so the no-prompt setup is the exception I run locally rather than the shipped behaviour.",
+  },
+  {
+    slug: "murmur",
+    title: "Murmur",
+    kicker: "Dictation that never leaves the machine",
     year: "2026",
     category: "Tools",
     featured: false,
     access: {
       kind: "closed",
-      note: "Private — it's tuned to one person's job search, which is me.",
+      note: "Private while the rebrand settles \u2014 going public once the offline build is stable.",
     },
-    stack: ["Python", "GitHub Actions", "Claude", "ATS APIs"],
+    stack: ["Rust", "Tauri v2", "Parakeet 0.6B", "Windows"],
     metrics: [
-      { value: "~18k", label: "postings pulled nightly" },
-      { value: "98", label: "ATS boards polled" },
+      { value: "0", label: "network calls at runtime" },
+      { value: "CPU", label: "no GPU required" },
     ],
     problem:
-      "Job searching as a student is a ranking problem disguised as a volume problem. There are thousands of postings, a handful are worth the effort, and finding those by hand is the whole cost.",
+      "I dictate all day through a commercial tool that sends audio to someone else's servers. I wanted the same hold-to-talk behaviour with nothing leaving the laptop, and I wanted it to survive being installed on a managed corporate machine with no admin rights.",
     approach: [
-      "A nightly GitHub Actions job pulls ~18k postings from 98 public ATS endpoints, dedupes, prefilters, and ranks them with zero credentials involved.",
-      "When I sit down, a local pass re-judges the top slice with actual reasoning and tailors my resume only where it demonstrably helps.",
-      "It never applies to anything. No browser automation, no LinkedIn scraping, nothing that can submit a form on my behalf — I apply myself, with autofill.",
+      "Started by proposing to reverse-engineer the tool I was replacing, then dropped the idea: its terms forbid decompiling, and it runs recognition in the cloud anyway, so the local binary had nothing to teach. The specification became its observable behaviour, which I know from using it every day.",
+      "Forked Handy (MIT, Tauri v2, Rust) rather than starting from zero, and rebranded it, because Handy's own name and mark are not covered by that licence.",
+      "Chose a single English model small enough to run on CPU, since the target machine may have no usable GPU.",
+      "Built an offline profile that compiles the HTTP client and model downloader out of the binary entirely and removes the auto-updater, so there is no network path left to disable later.",
+      "Designed for the worst case on a managed laptop: portable mode, no installer, no admin rights.",
     ],
     outcome:
-      "The constraint is the design. Auto-applying was the easiest feature to build and the one most likely to get an account restricted, produce slop, and waste a recruiter's time. Ranking is the part that was actually hard and actually helps.",
+      "Running locally as a daily driver. The binding constraint turned out to be organisational rather than technical \u2014 hold-to-talk needs a low-level keyboard hook, which is indistinguishable from a keylogger to an endpoint-security agent, so code signing and IT approval are the real shipping hurdles rather than the model.",
   },
   {
-    slug: "federated-learning",
-    title: "Federated Learning",
-    kicker: "Training without the data ever leaving",
-    year: "2025",
-    category: "Machine Learning",
+    slug: "mycourses-mcp",
+    title: "myCourses MCP",
+    kicker: "An API for a system that offers students none",
+    year: "2026",
+    category: "AI & Agents",
     featured: false,
     access: {
-      kind: "closed",
-      note: "Coursework — school-owned, not published.",
+      kind: "public",
+      repo: "https://github.com/sahildayal/mycourses-mcp",
     },
-    stack: ["Python", "PyTorch", "Differential Privacy"],
+    stack: ["TypeScript", "MCP Protocol", "D2L Brightspace", "GitHub Actions"],
     problem:
-      "Centralized training assumes you're allowed to collect the data. Often you aren't — which is the normal case in healthcare, not the exotic one.",
+      "Every assignment, deadline, grade and discussion thread at RIT lives in Brightspace, and none of it is reachable programmatically by the students it belongs to. Brightspace does have an OAuth API, but clients can only be registered by an administrator and there is no self-service path for a student.",
     approach: [
-      "Implemented FedAvg across distributed nodes, where models train locally and only gradients are shared.",
-      "Added differential privacy guarantees so the shared gradients don't leak the training examples that produced them.",
+      "Authenticated the way the web interface itself does, rather than pretending an API key was obtainable: a captured session plus the CSRF token D2L requires on every non-GET request.",
+      "Wrote the official OAuth path anyway and left it inert, so the day the university issues credentials it becomes a configuration change rather than a rewrite.",
+      "Positioned it as any Brightspace instance with RIT as the default host, because the protocol is identical across every university running D2L.",
+      "Opened it to contributors properly: MIT licence, CI running typecheck, build and a tool-listing smoke test, plus a contributing guide and issue templates.",
+      "Squashed the history before publishing, to keep real course identifiers and local paths out of the commit record.",
     ],
     outcome:
-      "Reached convergence across distributed nodes with privacy guarantees intact. Small in scope, but it's the theory underneath the redaction work I later did in production.",
+      "Public, and usable by any student or faculty member on a Brightspace instance. The useful part was reading the authentication story honestly: the documented path was closed to me, and the confident-sounding answer would have been to suggest asking for an API key that nobody at my level can be granted.",
+  },
+  {
+    slug: "fergie-time",
+    title: "Fergie Time",
+    kicker: "Formation as agent topology",
+    year: "2026",
+    category: "AI & Agents",
+    featured: false,
+    access: {
+      kind: "public",
+      repo: "https://github.com/sahildayal/fergie-time",
+    },
+    stack: ["TypeScript", "Node", "Claude Code", "git"],
+    metrics: [{ value: "11", label: "agents on the pitch" }],
+    problem:
+      "Running several coding agents at once is a coordination problem more than a model problem. They need somewhere to see each other's work, a way to divide it, and someone to decide what actually gets merged.",
+    approach: [
+      "Forked munder-difflin (MIT) rather than rebuilding it, because it already ran real agent CLIs in real terminals coordinating through a git repository as shared state, which is the genuinely hard part.",
+      "Registered a new theme against the extension seam the upstream maintainers had already shipped, so this stays an extension rather than a divergence that can never be merged back.",
+      "Made the football metaphor load-bearing instead of decorative: the formation is the topology. Switching between 4-3-3, 4-2-3-1 and 3-5-2 changes how many agents land in each lane \u2014 gate, review, infrastructure, architecture, build.",
+    ],
+    outcome:
+      "Runs locally with eleven agents and a manager deciding what ships. The idea worth keeping is the formation one: expressing parallelism as a shape people already understand turns out to be a good interface for deciding how much review capacity a task needs versus how much build capacity.",
+  },
+  {
+    slug: "ucl-predictor",
+    title: "UCL Predictor",
+    kicker: "Odds-blind, and measuring what that costs",
+    year: "2026",
+    category: "Machine Learning",
+    featured: false,
+    live: true,
+    access: {
+      kind: "public",
+      repo: "https://github.com/sahildayal/UCL_PREDICTOR",
+    },
+    stack: ["Python", "Scikit-Learn", "Pandas", "GitHub Pages", "GitHub Actions"],
+    metrics: [{ value: "6", label: "competing model arms" }],
+    problem:
+      "The companion football work concluded that the betting market is extremely hard to beat. This asks the opposite question: how well can a competition be forecast using only what happened on the pitch, with the odds deliberately withheld from the model?",
+    approach: [
+      "Built it odds-blind on purpose. No market price is an input anywhere, so the result measures how much information the odds were actually carrying.",
+      "Ran six arms against the 2026/27 Champions League league phase rather than one model, so differences between approaches stay visible instead of being averaged away.",
+      "Published the dashboard from the repository itself, with a season scoreboard and a permanent archive page for every matchday, so past predictions cannot be quietly revised after results land.",
+    ],
+    outcome:
+      "Live and updating through the league phase. The immutable per-matchday archive is the decision that matters most: a forecasting project that can edit its own history is not evidence of anything.",
+  },
+  {
+    slug: "potluck",
+    title: "Potluck",
+    kicker: "A live app under one hard constraint: no credit card, ever",
+    year: "2026",
+    category: "Data & Backend",
+    featured: false,
+    live: true,
+    access: {
+      kind: "public",
+      repo: "https://github.com/sahildayal/potluck",
+    },
+    stack: ["TypeScript", "Cloudflare Pages", "Render", "PostgreSQL", "Terraform", "Kubernetes"],
+    metrics: [
+      { value: "1,287", label: "recipes in the catalog" },
+      { value: "$0", label: "running cost" },
+    ],
+    problem:
+      "A recipe keeper my friends and I actually use, with one absolute constraint: no card details on any service at any point. That rules out most of the obvious cloud providers immediately, and turns what is normally a purchasing decision into the central design problem.",
+    approach: [
+      "Split the deployment by what each tier needed: the frontend on Cloudflare Pages where it stays warm for free, the API on a free tier that sleeps after fifteen minutes of silence, which is acceptable for this audience.",
+      "Kept the repository public deliberately, because public repositories get unlimited CI minutes and the whole build design leans on that.",
+      "Wrote the Kubernetes and Terraform for a self-hosted path, then chose not to provision it \u2014 the managed free tier shipped sooner, and infrastructure code loses nothing by waiting.",
+      "Loaded a real catalog rather than seed data, so search, filtering and pagination were exercised against 1,287 records from the first day.",
+    ],
+    outcome:
+      "Live and in use by the friend group it was built for, at no running cost. The constraint made it a better exercise than an unconstrained version would have been: every architectural choice had to be justified against a free tier's real limits rather than against a credit card.",
+  },
+  {
+    slug: "football-forecasting",
+    title: "Forecasting Against a Market That's Already Right",
+    kicker: "Three years of trying to beat the line, and what happened when I measured it properly",
+    year: "2025 \u2013 2026",
+    category: "Machine Learning",
+    featured: true,
+    live: true,
+    access: {
+      kind: "public",
+      repo: "https://github.com/sahildayal/EPL_LALIGA_PREDICTOR",
+    },
+    stack: ["Python", "Scikit-Learn", "XGBoost", "Dixon-Coles", "Pandas", "Kalshi API"],
+    metrics: [
+      { value: "16", label: "seasons of walk-forward CV" },
+      { value: "0 of 32", label: "folds where a model beat the line" },
+      { value: "0.00", label: "fitted model blend weight" },
+      { value: "4", label: "paper arms running" },
+    ],
+    problem:
+      "Football is the thing I would talk about for an hour unprompted, and predicting it is genuinely hard \u2014 the draw especially. I spent three years building models to beat the bookmakers, and eventually got far enough to test that ambition properly instead of assuming it.",
+    approach: [
+      "Started in 2025 with a binary home-win classifier over 2000\u20132019 Premier League data, with a betting simulation on top to check whether accuracy turned into anything real. It mostly did not, which was the point.",
+      "Followed it with an academic comparison across six models and 25 seasons \u2014 logistic regression, SVM, Gaussian discriminant analysis, random forest, XGBoost and an MLP \u2014 asking whether ensembles actually beat calibrated baselines on the draw class.",
+      "Then ran the test that settled it: walk-forward cross-validation across 16 seasons. No model beat the de-vigged sharp line in any of 32 fold-league combinations, and when I fitted a blend between my model and the market, the weight on my model converged to 0.00 in both leagues.",
+      "Rebuilt the system around that result rather than arguing with it. The sharp consensus became the reference, and the model's job became finding where another venue's prices disagree with it.",
+      "Ran four paper arms of $10,000 each with no reloads, including a model-only arm expected to lose \u2014 a control is worthless if you only run the arms you believe in.",
+      "Deleted the order-placement path entirely rather than putting a flag in front of it, so no configuration mistake can turn any of this into real money.",
+    ],
+    outcome:
+      "The honest finding is a negative one, and it is the most useful thing I have measured: a well-calibrated market had already priced in everything my features knew. Three years of work aimed at beating the line became evidence of how efficient the line is \u2014 which is exactly why the follow-up project withholds odds from the model entirely.",
   },
 ];
 
