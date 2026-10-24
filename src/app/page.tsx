@@ -73,13 +73,14 @@ export default function Home() {
               {current.title},{" "}
               <span className="text-sea">{current.company}</span>
             </p>
-            <span className="eyebrow">{current.team} team</span>
+            <span className="eyebrow">{current.team}</span>
           </div>
           <p className="mt-3 max-w-2xl leading-relaxed text-ink-soft">
-            Eight months full-time on the Python Rocks team, now continuing
-            part-time through the semester. Go MCP tooling used by 50+ engineers,
-            an eight-agent migration pipeline across 8 production microservices,
-            and a data access layer that redacts PHI before anything reads it.
+            Eight months full-time on Python Rocks, now part-time with Flock
+            (New Kids On The Flock) through the semester. Go MCP tooling used
+            by 50+ engineers, an eight-agent migration pipeline across 8
+            production microservices, and a data access layer that redacts PHI
+            before anything reads it.
           </p>
           <Link
             href="/work"

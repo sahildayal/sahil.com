@@ -17,7 +17,7 @@ export const experience: Role[] = [
     id: "paychex-2026",
     company: "Paychex, Inc.",
     title: "AI Software Engineering Co-op",
-    team: "Python Rocks",
+    team: "Flock · NKOTF",
     location: "Rochester, NY",
     start: "Jan 2026",
     end: "Present",
